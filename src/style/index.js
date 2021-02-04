@@ -1,12 +1,8 @@
 import styled from "styled-components";
+import color from "./colors";
 
 export const StyledApp = styled.div`
   width: 100%;
-`;
-
-export const Main = styled.main`
-  width: 100%;
-  background-color: red;
 `;
 export const FlexWrapper = styled.div`
   display: flex;

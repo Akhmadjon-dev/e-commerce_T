@@ -5,6 +5,7 @@ const colors = {
   mainBlue: "#21325B",
   black: "#000000",
   text: "#333",
+  mainGrey: "#EBEBEB"
 };
 
 export default colors;
