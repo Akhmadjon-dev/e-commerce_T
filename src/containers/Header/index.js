@@ -22,12 +22,12 @@ export default class Header extends Component {
             <li className="header__link">Бронь стола</li>
           </nav>
           <div className="header__num">
-            <FiPhone color="#00AC4E" style={{ width: "17px", height: "17px" }} />
+            <FiPhone className='phone' />
             <p>+7 (831) 282-60-00</p>
           </div>
           <div className="header__sign">
-            <AiOutlineUser color="#00AC4E" style={{ width: "31px", height: "31px" }} />
-            <RiShoppingCartLine color="#00AC4E" style={{ width: "31px", height: "31px" }} />
+            <AiOutlineUser className='user' />
+            <RiShoppingCartLine className='shoppingCart' />
           </div>
         </nav>
       </S.Header>

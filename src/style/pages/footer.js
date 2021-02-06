@@ -69,5 +69,123 @@ flex-direction:column;
         padding-left:10px;
     }
 }
+@media screen and (max-width:1024px){
+    width:1024px;
+    height:220px;
+    .firm{
+        width:900px;
+        height:20px;
+    }
+    .firm p{
+        padding-right:30px;
+        font-size: 8px;
+        font-weight: 300;
+        line-height: 25px;
+    }
+    .footer{
+        padding-top:20px;
+        width:900px;
+        p{
+            font-size: 8px;
+            font-weight: 300;
+            line-height: 25px;
+        }
+        h4{
+            margin:10px;
+            font-size: 10px;
+            font-weight: 300;
+            line-height: 25px;
+            letter-spacing: 2px;
+        }
+        .join{
+            height: 25px;
+            width: 150px;
+            margin-top:10px;
+        }
+        .join p{
+            padding-left:8px;
+        }
+    }
+    
+    
+}
+@media screen and (max-width:768px){
+    width:768px;
+    height:220px;
+    .firm{
+        width:700px;
+        height:20px;
+    }
+    .firm p{
+        padding-right:20px;
+        font-size: 8px;
+        font-weight: 200;
+        line-height: 20px;
+    }
+    .footer{
+        padding-top:20px;
+        width:700px;
+        p{
+            font-size: 8px;
+            font-weight: 200;
+            line-height: 25px;
+        }
+        h4{
+            margin:10px;
+            font-size: 10px;
+            font-weight: 200;
+            line-height: 25px;
+            letter-spacing: 2px;
+        }
+        .join{
+            height: 25px;
+            width: 130px;
+            margin-top:10px;
+        }
+        .join p{
+            padding-left:8px;
+        }
+    }
+    
+    
+}
+@media screen and (max-width:425px){
+    width:425px;
+    height:150px;
+    .firm{
+        display:none;
+    }
+    .firm p{
+        padding-right:20px;
+        font-size: 8px;
+        font-weight: 200;
+        line-height: 20px;
+    }
+    .footer{
+        padding-top:20px;
+        width:425px;
+        p{
+            font-size: 8px;
+            font-weight: 200;
+            line-height: 25px;
+        }
+        h4{
+            margin:5px;
+            font-size: 10px;
+            font-weight: 200;
+            line-height: 25px;
+            letter-spacing: 2px;
+        }
+        .join{
+            display:none;
+        }
+        .join p{
+            padding-left:8px;
+        }
+    }
+    
+    
+}
+
 `;
 export default S

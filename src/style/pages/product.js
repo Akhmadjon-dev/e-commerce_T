@@ -22,6 +22,7 @@ S.Product = styled.div`
     .relative{
         width:205.5px;
         height:125.83px;
+
     }
     .absolute{
         position:absolute;
@@ -55,7 +56,7 @@ S.Product = styled.div`
         outline:none;
         color:white;
         background-color:#00AC4E;
-        
+        cursor:pointer;
     }
     .activeStar{
         color:${color.mainGreen}
