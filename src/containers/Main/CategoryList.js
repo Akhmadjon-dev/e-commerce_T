@@ -36,7 +36,12 @@ export default class CategoryList extends Component {
               <h3>Все товары категории</h3>
             </div>
             <div className="main__products__list">
-              <Product />
+              <Product
+                name="somsa"
+                info="Jizzax somsasi juda mazali qorin to'yadi "
+                start="5"
+                price="24"
+              />
               <Product />
               <Product />
               <Product />
