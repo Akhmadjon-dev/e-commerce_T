@@ -2,8 +2,17 @@ import styled from "styled-components";
 import color from "./colors";
 
 export const StyledApp = styled.div`
-  width: 1440px;
-  max-height:3504px;
+  width: 100vw;
+  max-height:100%;
+  .dostavka{
+    width:990px;
+    height:400px;
+    margin:0 auto;
+  }
+  .dostavka__text{
+    width:990px;
+    height:200px;
+  }
   @media screen and (max-width:1024px){
     width:1024px;
   }

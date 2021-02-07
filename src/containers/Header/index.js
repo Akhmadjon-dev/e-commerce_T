@@ -5,6 +5,7 @@ import logo1 from "../../assets/img/Header/image1.png";
 import { AiOutlineUser } from "react-icons/ai";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { FiPhone } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   render() {
@@ -16,10 +17,10 @@ export default class Header extends Component {
             <img src={logo1} alt="" />
           </div>
           <nav className="header__nav">
-            <li className="header__link">Меню</li>
-            <li className="header__link">Доставка</li>
-            <li className="header__link">Оплата</li>
-            <li className="header__link">Бронь стола</li>
+            <Link className="header__link" to='/' >Меню</Link>
+            <Link className="header__link" to='/dostavka'>Доставка</Link>
+            <Link className="header__link">Оплата</Link>
+            <Link className="header__link">Бронь стола</Link>
           </nav>
           <div className="header__num">
             <FiPhone className='phone' />

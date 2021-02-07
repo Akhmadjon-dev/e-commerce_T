@@ -27,6 +27,7 @@ nav{
       }
   }
   .header__nav {
+     
       width:433px;
       height:33px;
       display:flex;
@@ -34,9 +35,11 @@ nav{
       align-items:center;
       list-style-type:none;
       font-weight: 500;
-      color:#333333;
   .header__link{
     cursor:pointer;
+    text-decoration: none;
+    color:#333333;
+
   }
   }
   .header__num{

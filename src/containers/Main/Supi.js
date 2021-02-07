@@ -6,7 +6,7 @@ import photo from '../../assets/img/banner/image.jpg'
 import photo2 from '../../assets/img/banner/image2.png'
 import video__banner from '../../assets/img/banner/video__banner.png'
 import { Link } from 'react-router-dom';
-// import Pagination from "../../components/Pagination";
+import color from '../../style/colors'
 
 export default class Main extends Component {
     render() {
@@ -24,7 +24,7 @@ export default class Main extends Component {
                         </div>
                     </div>
                     <div className="main__title">
-                        <h2 className='link'>СУПЫ</h2 >
+                        <h2 className='link' style={{ backgroundColor: '#00AC4E', color: 'white', padding: '5px', borderRadius: '5px' }}>СУПЫ</h2 >
                         <h2 className='link'>ХАЧАПУРИ</h2 >
                         <h2 className='link'>ХАЧАПУРИ</h2 >
                         <h2 className='link'>ХАЧАПУРИ</h2 >
