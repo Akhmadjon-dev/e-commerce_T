@@ -2,18 +2,8 @@ import styled from "styled-components";
 import color from "./colors";
 
 export const StyledApp = styled.div`
-  width: 1440px;
-  max-height:3504px;
-  @media screen and (max-width:1024px){
-    width:1024px;
-  }
-  @media screen and (max-width:768px){
-    width:768px;
-  }
-  @media screen and (max-width:425px){
-    width:425px;
-  }
-
+  width: 100%;
+  min-height: 100vh;
 `;
 export const FlexWrapper = styled.div`
   display: flex;
