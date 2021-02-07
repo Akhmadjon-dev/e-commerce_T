@@ -1,15 +1,18 @@
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./containers/Footer";
 import Header from "./containers/Header";
-import { Main, StyledApp } from "./styles/index";
+import Main from "./containers/Main";
+import Supi from './containers/Main/Supi'
+import { StyledApp } from './style/index';
 function App() {
   return (
     <BrowserRouter>
       <StyledApp>
         <Header />
-        <Main>
-          <h1> hello</h1>
-        </Main>
+        <Switch>
+          <Route exact path='/' component={Main} />
+          <Route exact path='/supi' component={Supi} />
+        </Switch>
         <Footer />
       </StyledApp>
     </BrowserRouter>
