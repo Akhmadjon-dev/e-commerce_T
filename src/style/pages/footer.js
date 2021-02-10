@@ -8,6 +8,10 @@ S.Footer = styled.footer`
   color: white;
   display: flex;
   flex-direction: column;
+  .poddershka{
+    // text-decoration:none;
+    color:white;
+  }
   .firm {
     width: 80%;
     height: 30px;
@@ -80,7 +84,7 @@ S.Footer = styled.footer`
     }
     .footer {
       padding-top: 20px;
-      width: 900px;
+      width: 90%;
       p {
         font-size: 8px;
         font-weight: 300;
@@ -106,7 +110,7 @@ S.Footer = styled.footer`
   @media screen and (max-width: 768px) {
     height: 220px;
     .firm {
-      width: 700px;
+      width: 90%;
       height: 20px;
     }
     .firm p {
@@ -117,7 +121,7 @@ S.Footer = styled.footer`
     }
     .footer {
       padding-top: 20px;
-      width: 700px;
+      width: 90%;
       p {
         font-size: 8px;
         font-weight: 200;
@@ -140,8 +144,8 @@ S.Footer = styled.footer`
       }
     }
   }
-  @media screen and (max-width: 425px) {
-    width: 425px;
+  @media screen and (max-width: 550px) {
+    width: 100%;
     height: 150px;
     .firm {
       display: none;

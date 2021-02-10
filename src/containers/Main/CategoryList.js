@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import Product from "../../components/Product";
 import S from "../../style/pages/main";
-import photo from "../../assets/img/banner/image.jpg";
-import photo2 from "../../assets/img/banner/image2.png";
-import video__banner from "../../assets/img/banner/video__banner.png";
+import bannerImage from "../../assets/img/banner/image.jpg";
 import { Link } from "react-router-dom";
 // import Pagination from "../../components/Pagination";
 
@@ -20,11 +18,11 @@ export default class CategoryList extends Component {
               <button>Подписаться</button>
             </div>
             <div className="main__banner_img">
-              <img src={photo} alt="" />
+              <img src={bannerImage} alt="" />
             </div>
           </div>
           <div className="main__title">
-            <h2 className="link">СУПЫ</h2>
+            <h2 className="link active">СУПЫ</h2>
             <h2 className="link">ХАЧАПУРИ</h2>
             <h2 className="link">ХАЧАПУРИ</h2>
             <h2 className="link">ХАЧАПУРИ</h2>

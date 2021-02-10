@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import S from '../../style/pages/footer'
 import { BiUser } from 'react-icons/bi'
 import { RiArrowRightSLine } from 'react-icons/ri'
+import { Link } from "react-router-dom";
 
 export default class Footer extends Component {
   render() {
@@ -12,7 +13,7 @@ export default class Footer extends Component {
           <h4>+7 (831) 282-60-00</h4>
           <p>График работы по будням с 9:00 до 18:00</p>
           <p>Email: info@.ru</p>
-          <p>Поддержка</p>
+          <Link to='/poddershka' className='poddershka'>Поддержка</Link>
         </div>
         <div>
           <p>Для приема заказов</p>

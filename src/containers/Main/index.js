@@ -5,9 +5,10 @@ import S from "../../style/pages/main";
 import photo from "../../assets/img/banner/image.jpg";
 import photo2 from "../../assets/img/banner/image2.png";
 import video__banner from "../../assets/img/banner/video__banner.png";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default class Main extends Component {
+
   render() {
     return (
       <S.Main>
@@ -23,13 +24,13 @@ export default class Main extends Component {
             </div>
           </div>
           <div className="main__title">
-            <Link className="link" to="/supi">
+            <NavLink className="link" to="/category">
               СУПЫ
-            </Link>
-            <Link className="link">ХАЧАПУРИ</Link>
-            <Link className="link">ХАЧАПУРИ</Link>
-            <Link className="link">ХАЧАПУРИ</Link>
-            <Link className="link">ХАЧАПУРИ</Link>
+            </NavLink>
+            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
+            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
+            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
+            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">
@@ -37,7 +38,7 @@ export default class Main extends Component {
               <h3>Все товары</h3>
             </div>
             <div className="main__products__list">
-              <Product />
+              <Product title price stars />
               <Product />
               <Product />
               <Product />
@@ -56,7 +57,7 @@ export default class Main extends Component {
             </div>
           </div>
           <div className="video__banner">
-            <img src={video__banner} alt="" />
+            <img className='video__img' src={video__banner} alt="" />
           </div>
           <div className="main__banner2">
             <div className="main__banner__text">
@@ -68,7 +69,7 @@ export default class Main extends Component {
             </div>
           </div>
         </div>
-      </S.Main>
+      </S.Main >
     );
   }
 }
