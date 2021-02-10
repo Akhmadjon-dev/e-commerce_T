@@ -1,21 +1,14 @@
 import React, { Component } from 'react'
 import S from '../style/pages/product'
 import { RiStarSFill } from "react-icons/ri";
-import noimage from '../assets/img/main/noimage.png'
-import vektor from '../assets/img/main/Vector.png'
-import vektor1 from '../assets/img/main/Vector1.png'
-import vektor2 from '../assets/img/main/Vector2.png'
-
+import productImage from '../assets/img/main/productImage.png'
 export default class Product extends Component {
     render() {
         return (
             <S.Product>
                 <div className="item">
                     <div className="image">
-                        <img className="relative" src={noimage} alt="" />
-                        <img className="absolute" src={vektor} alt="" />
-                        <img className="absolute1" src={vektor1} alt="" />
-                        <img className="absolute2" src={vektor2} alt="" />
+                        <img src={productImage} alt='' />
                     </div>
                     <h4>Голень Говядины</h4>
                     <p>Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.</p>

@@ -5,6 +5,10 @@ const S = {};
 
 S.Header = styled.div`
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.12);
+  width:100%;
+  .hamburger{
+    display:none;
+  }
   nav {
     width: 90%;
     height: 100px;
@@ -28,6 +32,10 @@ S.Header = styled.div`
       margin-left: 10px;
     }
   }
+  .header__link{
+    color: #333333;
+    text-decoration:none;
+  }
   .header__nav {
     width: 45%;
     height: 33px;
@@ -36,14 +44,12 @@ S.Header = styled.div`
     align-items: center;
     list-style-type: none;
     font-weight: 500;
-    color: #333333;
     margin: 0;
     .header__link {
       cursor: pointer;
     }
   }
   .header__num {
-    // width: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -59,14 +65,13 @@ S.Header = styled.div`
     align-items: center;
   }
   .phone {
-    width: 17px;
-    height: 17px;
+    font-size:20px;
     color: ${color.mainGreen};
     cursor: pointer;
   }
   .user,
   .shoppingCart {
-    height: 31px;
+    font-size:24px;
     color: ${color.mainGreen};
     cursor: pointer;
     margin-right: 10px;
@@ -90,15 +95,7 @@ S.Header = styled.div`
       line-height: 12px;
       margin: 0 auto;
     }
-    .user,
-    .shoppingCart {
-      width: 18px;
-      height: 18px;
-    }
-    .header__sign {
-      width: 50px;
-    }
-    .header__num {
+    .header__tel{
       display: none;
     }
     .header__nav {
@@ -106,18 +103,19 @@ S.Header = styled.div`
       width: 55%;
     }
   }
-  @media screen and (max-width: 425px) {
+  @media screen and (max-width: 550px) {
+    .hamburger{
+      display:block;
+      font-size:24px;
+    }
     nav {
       height: 60px;
       font-size: 12px;
       line-height: 12px;
       margin: 0 auto;
     }
-
-    .user,
-    .shoppingCart {
-      width: 14px;
-      height: 14px;
+    .header__nav{
+      display:none;
     }
     .header__nav {
       padding: 0 10px;

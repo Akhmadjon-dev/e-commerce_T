@@ -5,9 +5,13 @@ const S = {};
 
 
 S.Main = styled.main`
+.video__img{
+  width:100%;
+  height:100%;
+}
 .main__banner{
-  width: 994px;
-  height:253.71px;
+  width: 90%;
+  height:250px;
   background-color: #eee;
   margin:0 auto;
   margin-top:60px;
@@ -36,19 +40,18 @@ S.Main = styled.main`
     margin:0;
   }
   button{
-    height: 52.55424118041992px;
-    width: 217.4658203125px;
-    border-radius: 4.518181800842285px;
+    height: 52px;
+    width: 217px;
+    border-radius: 5px;
     margin:31.77px 0 0 41.77px;
     background: #00AC4E;
     color:white;
     border:none;
     outline:none;
-
   }
 }
 .main__banner2{
-  width: 994px;
+  width: 90%;
   height:253.71px;
   background-color: #eee;
   margin:60px auto;
@@ -65,10 +68,10 @@ S.Main = styled.main`
 
   }
   button{
-    height: 52.55424118041992px;
-    width: 217.4658203125px;
-    border-radius: 4.518181800842285px;
-    margin:31.77px 0 0 41.77px;
+    height: 52px;
+    width: 217px;
+    border-radius: 5px;
+    margin:31px 0 0 41px;
     background: #00AC4E;
     color:white;
     border:none;
@@ -76,37 +79,32 @@ S.Main = styled.main`
   }
 }
 .main__products{
-  
+  width:90%;
+  height:100%;
+  margin:0 auto;
   .main__products__list{
-    width:994px;
-    margin:40px auto;
+    width:100%;
+    height:100%;
+    // margin:40px auto;
     display:flex;
     flex-wrap:wrap; 
     justify-content:space-between;
-    .pagination{
-      margin-left:326px;
-    }
   }
   .main__products__title{
-    width:994px;
     height:20px;
     display:flex;
-    padding:15px 0;
-    margin:auto;
+    margin:40px 0;
     h3{
       font-family: TT Norms Pro;
       font-size: 27px;
-      font-style: normal;
       font-weight: 500;
       line-height: 19px;
-      letter-spacing: 0em;
-      text-align: left;
     }
   }
 
 }
 .main__title{
-  width: 994px;
+  width: 90%;
   height:28px;
   display:flex;
   margin:20px auto;
@@ -115,10 +113,6 @@ S.Main = styled.main`
   .bigger{
     font-size: 28px;
     color:${color.mainGreen}
-  }
-  .link_active{
-    padding:10px;
-    background-color:${color.mainGreen}
   }
   .link{
     text-decoration:none;
@@ -130,15 +124,18 @@ S.Main = styled.main`
     letter-spacing: 0em;
     text-align: left;
     color: #4F4F4F;
+  }  
+  .active{
+    padding:5px;
+    background-color:${color.mainGreen};
+    color:white;
+    border-radius:5px;
   }
-  .video__banner{
-    width:1440px;
-    height:648px;
-  }
+
 }
 @media screen and (max-width:1024px){
   .main__title{
-    width: 900px;
+    width: 90%;
     height:20px;
     .link{
       font-size: 16px;
@@ -150,7 +147,7 @@ S.Main = styled.main`
     }
   }
   .main__banner{
-    width:900px;
+    width:90%;
     height:200px;
     h1{
       font-weight:300;
@@ -172,17 +169,18 @@ S.Main = styled.main`
     }
   }
   .main__banner_img img{
-    width:300px;
-    height:200px;
+    float:right;
+    width:70%;
+    height:100%;
     border-radius:0 15px 15px 0;
   }
   .main__products{
     .main__products__list{
-      width:900px;
+      width:90%;
       margin:30px auto;
     }
     .main__products__title{
-      width:900px;
+      width:90%;
       height:15px;
       padding:10px 0;
       margin:auto;
@@ -194,11 +192,11 @@ S.Main = styled.main`
     }
   }
   .video__banner img{
-    width:1024px;
+    width:100%;
     height:448px;
   }
   .main__banner2{
-    width:900px;
+    width:90%;
     height:200px;
     h1{
       font-weight:300;
@@ -216,7 +214,7 @@ S.Main = styled.main`
 }
 @media screen and (max-width:768px){
   .main__title{
-    width: 700px;
+    width: 90%;
     height:20px;
     .link{
       font-size: 12px;
@@ -228,7 +226,7 @@ S.Main = styled.main`
     }
   }
   .main__banner{
-    width:700px;
+    width:90%;
     height:150px;
     h1{
       font-weight:200;
@@ -236,12 +234,9 @@ S.Main = styled.main`
       line-height:25px;
       padding:25px 0 0 25px;
     }
-    p{
-      font-size: 12px;
-      font-weight: 200;
-      line-height: 15px;
-      padding:10px 0 0 25px;
-    }
+    p{  
+      display:none;
+      }
     button{
       height: 35px;
       width: 150px;
@@ -249,21 +244,20 @@ S.Main = styled.main`
       margin:15px 0 0 25px;  
     }
   }
-  .main__banner_img img{
-    width:200px;
-    height:150px;
-    border-radius:0 15px 15px 0;
-  }
+
   .main__products{
     .main__products__list{
-      width:700px;
+      width:90%;
       margin:20px auto;
+      display:flex;
+      flex-wrap:wrap; 
+      justify-content:space-between;
+  
     }
     .main__products__title{
-      width:700px;
+      width:70%;
       height:15px;
-      padding:10px 0;
-      margin:auto;
+      margin: 30px auto;
       h3{
         font-size: 18px;
         font-weight: 300;
@@ -272,11 +266,11 @@ S.Main = styled.main`
     }
   }
   .video__banner img{
-    width:768px;
+    width:100%;
     height:290px;
   }
   .main__banner2{
-    width:700px;
+    width:70%;
     height:150px;
     h1{
       font-weight:200;
@@ -292,9 +286,9 @@ S.Main = styled.main`
     }
   }
 }
-@media screen and (max-width:425px){
+@media screen and (max-width:550px){
   .main__title{
-    width: 375px;
+    width: 90%;
     height:20px;
     .link{
       font-size: 10px;
@@ -306,7 +300,7 @@ S.Main = styled.main`
     }
   }
   .main__banner{
-    width:425px;
+    width:90%;
     height:100px;
     border-radius:10px 0 0 10px;
     h1{
@@ -329,45 +323,42 @@ S.Main = styled.main`
     }
   }
   .main__banner_img img{
-    width:150px;
-    height:100px;
+    float:right;
+    width:70%;
+    height:100%;
     border-radius:0 10px 10px 0;
   }
   .main__products{
     .main__products__list{
-      width:425px;
+      width:100%;
       margin:15px auto;
     }
     .main__products__title{
-      width:425px;
       height:15px;
       padding:15px 0;
       margin:auto;
       h3{
-        font-size: 12px;
+        font-size: 15px;
         font-weight: 200;
         line-height: 10px;
       }
     }
   }
   .video__banner img{
-    width:425px;
-    height:200px;
+    width:100%;
+    height:100%;
   }
   .main__banner2{
-    width:425px;
+    width:90%;
     height:100px;
     h1{
-      font-weight:200;
-      font-size:15px;
-      line-height:20px;
-      padding:20px 0 0 20px;
+      display:none;
     }
     button{
       height: 20px;
       width: 90px;
       border-radius: 3px;
-      margin:10px 0 0 20px;  
+      margin:40px 0 0 20px;  
     }
   }
 }
