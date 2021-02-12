@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SignIn from "./components/SignIn";
+import SignUp from "./components/SignUp";
 import Footer from "./containers/Footer";
 import Header from "./containers/Header";
 import Main from "./containers/Main";
@@ -22,6 +23,7 @@ function App() {
         </Switch>
         <Footer />
         <SignIn />
+        {/* <SignUp /> */}
       </StyledApp>
     </BrowserRouter>
   );

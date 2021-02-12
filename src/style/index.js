@@ -13,11 +13,16 @@ left:50%;
 transform:translate(-50%,-50%);
 width:25vw;
 min-width:350px;
-height:60vh;
+min-height:60vh;
 background-color:white;
 border-radius:15px;
 box-shadow: 0px 0px 17.7465px rgba(0, 0, 0, 0.12);
 z-index:1000;
+.radio__input{
+  display:flex;
+  align-items:center;
+}
+
 }
 &::before{
   content:'';

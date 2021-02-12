@@ -19,7 +19,7 @@ export default class Header extends Component {
     const { isShow } = this.state;
     return (
       <S.Header>
-        {isShow && (<SignIn />)}
+        {isShow && (<SignIn changeHandler={this.modalHandler} />)}
         <nav>
           <HiOutlineMenuAlt2 className='hamburger' />
           <div className="header__logo">
