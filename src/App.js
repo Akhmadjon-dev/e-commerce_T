@@ -9,6 +9,8 @@ import Dostavka from "./containers/Main/Dostavka";
 import Oplata from "./containers/Main/Oplata";
 import Support from "./containers/Main/Support";
 import { StyledApp } from "./style/index";
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -22,7 +24,7 @@ function App() {
           <Route exact path="/poddershka" component={Support} />
         </Switch>
         <Footer />
-        <SignIn />
+        {/* <SignIn /> */}
         {/* <SignUp /> */}
       </StyledApp>
     </BrowserRouter>

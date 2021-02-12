@@ -2,8 +2,8 @@ import styled from "styled-components";
 import color from "./colors";
 
 export const StyledApp = styled.div`
-  width: 100vw;
-  min-height: 100vh;
+  // width: 100vw;
+  // min-height: 100vh;
 `;
 export const Signin = styled.div`
 .sign{
