@@ -7,12 +7,15 @@ import { Link } from 'react-router-dom';
 import { Signin } from "../style/index";
 
 export default class SignIn extends Component {
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <Signin>
                 <div className='sign'>
                     <div className='header'>
-                        <MdClose className='close' onClick={ } />
+                        <div onClick={this.props.changeHandler}><MdClose className='close' /></div>
                         <BiUser className='user' />
                         <h4>Войти в личный кабинет</h4>
                     </div>
