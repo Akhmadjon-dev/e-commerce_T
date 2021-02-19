@@ -32,9 +32,10 @@ S.Product = styled.div`
         align-item:center;
         margin-bottom:13px;
     }
-    button{
-        width:60%;
-        height:38px;
+    .button{
+        text-decoration:none;
+        display:inline-block;
+        padding:10px 20px;
         border-radius:5px;
         border:none;
         outline:none;

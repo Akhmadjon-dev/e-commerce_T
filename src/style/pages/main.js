@@ -114,24 +114,6 @@ S.Main = styled.main`
     font-size: 28px;
     color:${color.mainGreen}
   }
-  .link{
-    text-decoration:none;
-    font-family: TT Hoves;
-    font-size: 23px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 27px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #4F4F4F;
-  }  
-  .active{
-    padding:5px;
-    background-color:${color.mainGreen};
-    color:white;
-    border-radius:5px;
-  }
-
 }
 @media screen and (max-width:1024px){
   .main__title{

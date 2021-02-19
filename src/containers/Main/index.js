@@ -24,13 +24,11 @@ export default class Main extends Component {
             </div>
           </div>
           <div className="main__title">
-            <NavLink className="link" to="/category">
-              СУПЫ
-            </NavLink>
-            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
-            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
-            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
-            <NavLink to='/' className="link">ХАЧАПУРИ</NavLink>
+            <NavLink exact to='/category' activeStyle={{ padding: '10px 30px', backgroundColor: 'green', borderRadius: '5px' }}>СУПЫ</NavLink>
+            <NavLink to='/'>ХАЧАПУРИ</NavLink>
+            <NavLink to='/'>ХАЧАПУРИ</NavLink>
+            <NavLink to='/'>ХАЧАПУРИ</NavLink>
+            <NavLink to='/'>ХАЧАПУРИ</NavLink>
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">

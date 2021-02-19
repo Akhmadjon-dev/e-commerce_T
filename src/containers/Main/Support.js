@@ -8,12 +8,11 @@ export default class Support extends Component {
                 <div className='dostavka'>
                     <h1>Поддержка</h1>
                     <form action=''>
-                        <input type='text' placeholder='Напишите сообщение...' />
+                        <textarea type='text' placeholder='Напишите сообщение...' />
                         <div className='dostavka__button'>
                             <button className='katalog'>Отправить</button>
                         </div>
                     </form>
-
                 </div>
             </Deliver >
         )
