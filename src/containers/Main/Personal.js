@@ -33,9 +33,21 @@ export default class Personal extends Component {
                                     <label>Ваше имя</label>
                                     <input type='text' name='ism' placeholder='Имя' />
                                 </p>
-                                <p className='boxxx-p'>
+                                <p className='boxxx-p' style={{ marginLeft: '30px' }}>
                                     <label>Ваша фамилия</label>
                                     <input type='text' name='familiya' placeholder='Фамилия' />
+                                </p>
+                            </div>
+                            <div className='boxxx'>
+                                <p className='boxxx__p'>
+                                    <label>Ваше отчество</label>
+                                    <input type='text' name='ism' placeholder='отчество' />
+                                </p>
+                            </div>
+                            <div className='boxxx'>
+                                <p className='boxxx__p'>
+                                    <label>Адрес электронной почты</label>
+                                    <input type='text' name='ism' placeholder='Email' />
                                 </p>
                             </div>
                         </div>

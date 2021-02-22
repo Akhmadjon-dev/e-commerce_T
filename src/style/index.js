@@ -130,9 +130,15 @@ main{
         height:80px;
         display:flex;
         align-items:center;
-        justify-content:space-between;
+        input{
+          height:40px;
+          background: #FCFCFC;
+          border: 1.61275px solid #EBEBEB;
+          border-radius: 8.06373px;
+        }
         .boxxx__p{
-          width:30%
+          display:flex;
+          flex-direction:column;
         }
       }
       .box{
@@ -804,6 +810,9 @@ export const Deliver = styled.div`
       width:30%;
       display:flex;
       justify-content:space-between;
+      .link{
+        text-decoration:none;
+      }
     }
     .katalog{
       padding:10px 30px;

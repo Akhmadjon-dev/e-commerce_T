@@ -18,6 +18,11 @@ S.Main = styled.main`
   border-radius:15px;
   display:flex;
   justify-content:space-between;
+  img{
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+  }
   h1{
     color: #333333;
     font-weight:400;

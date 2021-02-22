@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { ContentApp } from '../../style'
 import { MdClose } from 'react-icons/md'
 import image from '../../assets/img/main/image.png'
+import Basket from './Basket3'
 
 
 export default class Basket2 extends Component {
@@ -13,10 +14,9 @@ export default class Basket2 extends Component {
     }
     render() {
         const { isShow } = this.state;
-        console.log(this.state)
         return (
             <ContentApp>
-                <main>
+                {isShow ? <Basket /> : <main>
                     <aside>
                         <div className='basket'>
                             <h2>Оформление заказа</h2>
@@ -100,10 +100,11 @@ export default class Basket2 extends Component {
                             </p>}
 
                             {!isShow && <p className='link' onClick={this.modalHandler}>Добавить комментарий.</p>}
-                            <button>Оформить заказ</button>
+                            <button onClick={this.modalHandler}>Оформить заказ</button>
                         </form>
                     </article>
-                </main>
+                </main>}
+
             </ContentApp>
         )
     }
