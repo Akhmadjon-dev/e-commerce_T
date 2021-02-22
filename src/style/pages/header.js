@@ -9,6 +9,9 @@ S.Header = styled.div`
   .hamburger{
     display:none;
   }
+  .d-none{
+    display:none;
+  }
   nav {
     width: 90%;
     height: 100px;

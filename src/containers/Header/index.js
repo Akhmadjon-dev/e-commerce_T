@@ -8,6 +8,7 @@ import { HiOutlineMenuAlt2 } from "react-icons/hi";
 import { FiPhone } from "react-icons/fi";
 import { Link } from 'react-router-dom';
 import SignIn from "../../components/SignIn";
+
 export default class Header extends Component {
   state = {
     isShow: false,
@@ -18,8 +19,12 @@ export default class Header extends Component {
   render() {
     const { isShow } = this.state;
     return (
+
       <S.Header>
-        {isShow && (<SignIn changeHandler={this.modalHandler} />)}
+        <div className={!isShow && 'd-none'}>
+
+          <SignIn onChange={this.modalHandler} />
+        </div>
         <nav>
           <HiOutlineMenuAlt2 className='hamburger' />
           <div className="header__logo">

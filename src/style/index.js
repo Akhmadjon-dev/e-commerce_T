@@ -2,7 +2,6 @@ import styled from "styled-components";
 import color from "./colors";
 
 export const StyledApp = styled.div`
-
 `;
 export const ContentApp = styled.div`
 *{
