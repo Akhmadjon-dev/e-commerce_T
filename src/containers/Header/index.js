@@ -11,32 +11,31 @@ import SignIn from "../../components/SignIn";
 
 export default class Header extends Component {
   state = {
-    isShow: false, 
-    data: [2,3,4,5,6,7]
+    isShow: false,
   }
   modalHandler = () => {
     this.setState((prevState) => ({ isShow: !prevState.isShow }))
   }
   render() {
-    const { isShow } = this.state; 
+    const { isShow } = this.state;
     return (
 
       <S.Header>
         <div className={!isShow && 'd-none'}>
-          
-         <SignIn onChange={this.modalHandler} />
+
+          <SignIn onChange={this.modalHandler} />
         </div>
         <nav>
           <HiOutlineMenuAlt2 className='hamburger' />
           <div className="header__logo">
-            <img src={logo} alt="" />
-            <img src={logo1} alt="" />
+            <Link to='/'><img src={logo} alt="" /></Link>
+            <Link to='/'><img src={logo1} alt="" /></Link>
           </div>
           <nav className="header__nav">
             <Link className="header__link" to='/' >Меню</Link>
             <Link className="header__link" to='/deliver'>Доставка</Link>
             <Link className="header__link" to='/oplata'>Оплата</Link>
-            <Link className="header__link">Бронь стола</Link>
+            <Link to='/reservation' className="header__link">Бронь стола</Link>
           </nav>
           <div className="header__num">
             <FiPhone className="phone" />
@@ -44,7 +43,7 @@ export default class Header extends Component {
           </div>
           <div className="header__sign">
             <AiOutlineUser onClick={this.modalHandler} className="user" />
-            <RiShoppingCartLine className="shoppingCart" />
+            <Link to='/cart'><RiShoppingCartLine className="shoppingCart" /></Link>
           </div>
         </nav>
       </S.Header>

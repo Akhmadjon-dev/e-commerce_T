@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import S from '../style/pages/product'
 import { RiStarSFill } from "react-icons/ri";
 import productImage from '../assets/img/main/productImage.png'
+import { Link } from 'react-router-dom';
 export default class Product extends Component {
     render() {
         return (
@@ -23,7 +24,7 @@ export default class Product extends Component {
                         <h4>1 050 ₽/кг</h4>
                         <p>За 500гр.</p>
                     </div>
-                    <button>В корзину</button>
+                    <Link className='button' to='/content'>В корзину</Link>
                 </div>
             </S.Product>
         )

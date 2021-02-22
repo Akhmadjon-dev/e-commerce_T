@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BsArrowRightShort } from "react-icons/bs";
+import { Link } from 'react-router-dom';
 import { Deliver } from "../../style";
 
 export default class Oplata extends Component {
@@ -18,10 +19,10 @@ export default class Oplata extends Component {
                     </div>
                     <div className='dostavka__button'>
                         <button className='katalog'>В каталог</button>
-                        <div className='oplate'>
+                        <Link className='link' to='/deliver'><div className='oplate'>
                             <p>О доставке</p>
                             <BsArrowRightShort className='arrow' />
-                        </div>
+                        </div></Link>
                     </div>
                 </div>
             </Deliver>

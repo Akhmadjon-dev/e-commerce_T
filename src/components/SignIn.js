@@ -4,17 +4,24 @@ import { BiUser } from 'react-icons/bi'
 import { FiPhone } from 'react-icons/fi'
 import { VscKey } from 'react-icons/vsc'
 import { Link } from 'react-router-dom';
+import SignUp from './SignUp'
 import { Signin } from "../style/index";
 
 export default class SignIn extends Component {
-    
+    state = {
+        isShow: false
+    }
+    modalHandler = () => {
+        this.setState((prevState) => ({ isShow: !prevState.isShow }))
+    }
+
     render() {
-        console.log(this.props, 'yoooo')
-        return ( 
-            <Signin>
-                <div className='sign'>
+        const { isShow } = this.state;
+        return (
+            < Signin >
+                {isShow ? <SignUp closeHandler={this.modalHandler} /> : <div className='sign'>
                     <div className='header'>
-                        <MdClose onClick={this.props.onChange} className='close' />
+                        <MdClose onClick={this.props.changeHandler} className='close' />
                         <BiUser className='user' />
                         <h4>Войти в личный кабинет</h4>
                     </div>
@@ -29,10 +36,11 @@ export default class SignIn extends Component {
                         </div>
                     </div>
                     <Link className='link'>Забыли пароль?</Link>
-                    <button>Войти</button>
-                    <p>Впервые у нас? Зарегистрироваться</p>
-                </div>
-            </Signin>
+                    <button className='signin__button' >Войти</button>
+                    <p className='signin__p'>Впервые у нас?<Link onClick={this.modalHandler}>Зарегистрироваться </Link></p>
+                </div>}
+
+            </Signin >
         )
     }
 }

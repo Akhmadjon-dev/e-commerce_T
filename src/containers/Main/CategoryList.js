@@ -22,11 +22,11 @@ export default class CategoryList extends Component {
             </div>
           </div>
           <div className="main__title">
-            <h2 className="link active">СУПЫ</h2>
-            <h2 className="link">ХАЧАПУРИ</h2>
-            <h2 className="link">ХАЧАПУРИ</h2>
-            <h2 className="link">ХАЧАПУРИ</h2>
-            <h2 className="link">ХАЧАПУРИ</h2>
+            <Link to='/category'>СУПЫ</Link>
+            <Link to='/' >ХАЧАПУРИ</Link>
+            <Link to='/'>ХАЧАПУРИ</Link>
+            <Link to='/'>ХАЧАПУРИ</Link>
+            <Link to='/'>ХАЧАПУРИ</Link>
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">
