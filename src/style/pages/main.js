@@ -5,6 +5,7 @@ const S = {};
 
 
 S.Main = styled.main`
+
 .video__img{
   width:100%;
   height:100%;

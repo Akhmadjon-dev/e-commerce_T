@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./containers/Footer";
 import Header from "./containers/Header";
-import Content from './containers/Main/Content'
+import Content from "./containers/Main/Content";
 import Main from "./containers/Main";
 import Category from "./containers/Main/CategoryList";
 import Dostavka from "./containers/Main/Dostavka";
@@ -17,7 +17,7 @@ function App() {
     <BrowserRouter>
       <StyledApp>
         <Header />
-        {/* <Switch>
+        <Switch>
           <Route exact path="/" component={Main} />
           <Route exact path="/category" component={Category} />
           <Route exact path="/deliver" component={Dostavka} />
@@ -26,8 +26,7 @@ function App() {
           <Route exact path="/content" component={Content} />
           <Route exact path="/cart" component={Personal} />
           <Route exact path="/reservation" component={Basket} />
-        </Switch> */}
-        <Personal />
+        </Switch>
         <Footer />
       </StyledApp>
     </BrowserRouter>
