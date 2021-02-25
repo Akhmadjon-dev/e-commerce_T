@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { ContentApp } from '../../style'
-import { MdClose } from 'react-icons/md'
 import image from '../../assets/img/main/image.png'
 import data from '../../assets/img/main/data.png'
 import history from '../../assets/img/main/history.png'

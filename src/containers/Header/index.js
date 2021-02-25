@@ -18,13 +18,11 @@ export default class Header extends Component {
   }
   render() {
     const { isShow } = this.state;
+    console.log(isShow);
     return (
 
       <S.Header>
-        <div className={!isShow && 'd-none'}>
-
-          <SignIn onChange={this.modalHandler} />
-        </div>
+        {isShow && <SignIn changeHandler={this.modalHandler} />}
         <nav>
           <HiOutlineMenuAlt2 className='hamburger' />
           <div className="header__logo">

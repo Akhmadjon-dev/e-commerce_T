@@ -7,13 +7,28 @@ import Basket from './Basket3'
 
 export default class Basket2 extends Component {
     state = {
-        isShow: false
+        isShow: false,
+        count: 0,
+        count2: 0
     }
     modalHandler = () => {
         this.setState((prevState) => ({ isShow: !prevState.isShow }))
     }
+    incrementHandle = () => {
+        this.setState({ count: this.state.count + 1 })
+    }
+    decrementHandle = () => {
+        this.setState({ count: this.state.count - 1 })
+    }
+    incrementHandle2 = () => {
+        this.setState({ count2: this.state.count2 + 1 })
+    }
+    decrementHandle2 = () => {
+        this.setState({ count2: this.state.count2 - 1 })
+    }
     render() {
-        const { isShow } = this.state;
+        const { isShow, count, count2 } = this.state;
+
         return (
             <ContentApp>
                 {isShow ? <Basket /> : <main>
@@ -26,9 +41,9 @@ export default class Basket2 extends Component {
                                 <img src={image} alt='' />
                                 <p>Хачапури</p>
                                 <div className='button'>
-                                    <p>-</p>
-                                    <p>1</p>
-                                    <p>+</p>
+                                    <p onClick={this.decrementHandle} style={{ cursor: 'pointer' }}>-</p>
+                                    <p>{count > 0 ? count : 0}</p>
+                                    <p onClick={this.incrementHandle} style={{ cursor: 'pointer' }}>+</p>
                                 </div>
                                 <strong>350 ₽</strong>
                             </div>
@@ -37,9 +52,9 @@ export default class Basket2 extends Component {
                                 <img src={image} alt='' />
                                 <p>Хачапури</p>
                                 <div className='button'>
-                                    <p>-</p>
-                                    <p>1</p>
-                                    <p>+</p>
+                                    <p onClick={this.decrementHandle2} style={{ cursor: 'pointer' }}>-</p>
+                                    <p>{count2 > 0 ? count2 : 0}</p>
+                                    <p onClick={this.incrementHandle2} style={{ cursor: 'pointer' }}>+</p>
                                 </div>
                                 <strong>350 ₽</strong>
                             </div>
