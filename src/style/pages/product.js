@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import color from "../colors"
+import color from "../colors";
 
 const S = {};
 
@@ -23,6 +23,9 @@ S.Product = styled.div`
         display:flex;
         justify-content:center;
         align-items:center;
+    }
+    .image img{
+        width:100%;
     }
 
     .item__price{
@@ -86,4 +89,4 @@ S.Product = styled.div`
     
 }
 `;
-export default S
+export default S;

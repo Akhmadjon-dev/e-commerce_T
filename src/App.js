@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Footer from "./containers/Footer";
 import Header from "./containers/Header";
-import Content from './containers/Main/Content'
+import Content from "./containers/Main/Content";
 import Main from "./containers/Main";
 import Category from "./containers/Main/CategoryList";
 import Dostavka from "./containers/Main/Dostavka";
@@ -27,7 +27,6 @@ function App() {
           <Route exact path="/cart" component={Personal} />
           <Route exact path="/reservation" component={Basket} />
         </Switch>
-        {/* <Personal /> */}
         <Footer />
       </StyledApp>
     </BrowserRouter>
