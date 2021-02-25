@@ -1,3 +1,5 @@
+import React, { Component } from 'react'
+
 import { Deliver } from '../../style'
 
 export default class Support extends Component {
@@ -18,5 +20,4 @@ export default class Support extends Component {
     }
 }
 
-export default Support
 
