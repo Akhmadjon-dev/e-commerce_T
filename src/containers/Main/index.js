@@ -12,11 +12,22 @@ import categories from "../../db/categories";
 export default class Main extends Component {
   state = {
     category: "all",
+    products: [],
   };
+
+  componentDidMount() {
+    this.setState({ products });
+  }
+
   categoriesHanlder = (item) => {
     this.setState({ category: item });
   };
+  navigateHandler = (item) => {
+    this.props.history.push(`/category/${item}`);
+    console.log(item);
+  };
   render() {
+    const { products } = this.state;
     return (
       <S.Main>
         <div className="main">
@@ -31,14 +42,16 @@ export default class Main extends Component {
             </div>
           </div>
           <div className="main__title">
-            <button onClick={() => this.categoriesHanlder("all")}>All</button>
             {categories.map((item) => (
-              <button
+              <NavLink
                 key={item.id}
-                onClick={() => this.categoriesHanlder(item.title)}
+                to={{
+                  pathname: `/category/${item.title}`,
+                  state: "shuni ichidan olish ham mumkin",
+                }}
               >
                 {item.title}
-              </button>
+              </NavLink>
             ))}
             <IoIosArrowForward className="bigger" />
           </div>
@@ -47,31 +60,17 @@ export default class Main extends Component {
               <h3>Все товары</h3>
             </div>
             <div className="main__products__list">
-              {this.state.category === "all"
-                ? products.map((item) => (
-                    <Product
-                      key={item.id}
-                      title={item.title}
-                      price={item.price}
-                      rate={item.rate}
-                      description={item.description}
-                      img={item.img}
-                      weight={item.weight}
-                    />
-                  ))
-                : products
-                    .filter((item) => item.category === this.state.category)
-                    .map((item) => (
-                      <Product
-                        key={item.id}
-                        title={item.title}
-                        price={item.price}
-                        rate={item.rate}
-                        description={item.description}
-                        img={item.img}
-                        weight={item.weight}
-                      />
-                    ))}
+              {products.map((item) => (
+                <Product
+                  key={item.id}
+                  title={item.title}
+                  price={item.price}
+                  rate={item.rate}
+                  description={item.description}
+                  img={item.img}
+                  weight={item.weight}
+                />
+              ))}
             </div>
           </div>
           <div className="video__banner">
