@@ -49,6 +49,19 @@ export default class Main extends Component {
             <div className="main__products__list">
               {this.state.category === "all"
                 ? products.map((item) => (
+                  <Product
+                    key={item.id}
+                    title={item.title}
+                    price={item.price}
+                    rate={item.rate}
+                    description={item.description}
+                    img={item.img}
+                    weight={item.weight}
+                  />
+                ))
+                : products
+                  .filter((item) => item.category === this.state.category)
+                  .map((item) => (
                     <Product
                       key={item.id}
                       title={item.title}
@@ -58,20 +71,7 @@ export default class Main extends Component {
                       img={item.img}
                       weight={item.weight}
                     />
-                  ))
-                : products
-                    .filter((item) => item.category === this.state.category)
-                    .map((item) => (
-                      <Product
-                        key={item.id}
-                        title={item.title}
-                        price={item.price}
-                        rate={item.rate}
-                        description={item.description}
-                        img={item.img}
-                        weight={item.weight}
-                      />
-                    ))}
+                  ))}
             </div>
           </div>
           <div className="video__banner">

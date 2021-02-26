@@ -116,6 +116,12 @@ S.Main = styled.main`
   margin:20px auto;
   justify-content:space-between;
   align-items:center;
+  button{
+    border:none;
+    outline:none;
+    background-color:white;
+    cursor:pointer;
+  }
   .bigger{
     font-size: 28px;
     color:${color.mainGreen}
