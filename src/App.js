@@ -19,7 +19,7 @@ function App() {
         <Header />
         <Switch>
           <Route exact path="/" component={Main} />
-          <Route exact path="/category" component={Category} />
+          <Route exact path="/category/:type" component={Category} />
           <Route exact path="/deliver" component={Dostavka} />
           <Route exact path="/oplata" component={Oplata} />
           <Route exact path="/poddershka" component={Support} />
