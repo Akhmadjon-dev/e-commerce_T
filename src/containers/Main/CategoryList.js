@@ -5,7 +5,7 @@ import S from "../../style/pages/main";
 import bannerImage from "../../assets/img/banner/image.jpg";
 import { Link } from "react-router-dom";
 import products from "../../db/products";
-// import Pagination from "../../components/Pagination";
+
 
 export default class CategoryList extends Component {
   state = {
@@ -35,11 +35,11 @@ export default class CategoryList extends Component {
             </div>
           </div>
           <div className="main__title">
-            <Link to="/category">СУПЫ</Link>
-            <Link to="/">ХАЧАПУРИ</Link>
-            <Link to="/">ХАЧАПУРИ</Link>
-            <Link to="/">ХАЧАПУРИ</Link>
-            <Link to="/">ХАЧАПУРИ</Link>
+            <button >СУПЫ</button>
+            <button>ХАЧАПУРИ</button>
+            <button>ХАЧАПУРИ</button>
+            <button>ХАЧАПУРИ</button>
+            <button>ХАЧАПУРИ</button>
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">
