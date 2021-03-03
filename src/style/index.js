@@ -88,6 +88,60 @@ h3{
       }
     }
   }
+  .main{
+    .aside{
+      width:100%;
+      min-height:200px;
+      margin-top:30px;
+      padding:15px;
+      display:flex;
+      justify-content:space-between;
+      background: #FFFFFF;
+      box-shadow: 0px 0px 16.2899px rgba(0, 0, 0, 0.07);
+      border-radius: 13.0319px;
+      .text{
+        p{
+          display:flex;
+          padding:5px 0;
+          font-family: TT Norms Pro;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 19.4096px;
+          line-height: 29px;
+          span{
+            font-family: TT Norms Pro;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 19.4096px;
+            line-height: 29px;
+          }
+        }
+      }
+      .box{
+        width:350px;
+        height:80px;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        .button{
+          width:80px;
+          height:30px;
+          display:flex;
+          justify-content:space-around;
+          align-items:center;
+          background: #FCFCFC;
+          border: 0.903636px solid #EBEBEB;
+          border-radius: 9.03636px;
+        }
+        img{
+          height:80%;
+        }
+        
+        border-bottom:1px solid #EBEBEB;
+      }
+     }
+    }
+  }
 main{
   width:70%;
   min-height:80vh;
@@ -95,11 +149,13 @@ main{
   display:flex;
   justify-content:space-between;
   
+  
   aside{
     width:47.5%;
     min-height:70vh;
     dispaly:flex;
     flex-direction:column;
+    
     .basket{
       width:100%;
       min-height:40vh;      

@@ -43,7 +43,7 @@ export default class Main extends Component {
           </div>
           <div className="main__title">
             {categories.map((item) => (
-              <NavLink
+              <NavLink className='nav__link'
                 key={item.id}
                 to={{
                   pathname: `/category/${item.title}`,
