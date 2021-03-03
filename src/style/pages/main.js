@@ -116,6 +116,10 @@ S.Main = styled.main`
   margin:20px auto;
   justify-content:space-between;
   align-items:center;
+  .nav__link{
+    text-decoration:none;
+    color:
+  }
   button{
     border:none;
     outline:none;
