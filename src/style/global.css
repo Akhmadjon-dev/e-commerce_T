@@ -3,3 +3,45 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+
+
+.pagination{
+    display: flex;
+    justify-content: center;
+}
+.pagination li{
+    list-style-type:none;
+    border-radius: 3px;
+    /* background-color: #00ac4d60; */
+    height: 30px;
+    cursor: pointer;
+    line-height: 30px;
+}
+.pagination a{
+    outline-width: 0;
+}
+
+.pageNumber{
+    margin: 0px 5px;
+    text-align: center;
+    min-width: 30px;
+    max-width: 50px;
+    
+}
+.previous{
+    margin-right: 10px;
+}
+.next{
+    margin-left: 10px;
+}
+.pagination li:hover{
+    
+    background-color: #00ac4e;
+}
+.dots{
+    width: 100px !important;
+    text-align: center;
+}
+.page-active{
+    background-color: #00ac4e;
+}

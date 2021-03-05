@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Paginition from 'react-paginate'
+import Paginition from "react-paginate";
 import { IoIosArrowForward } from "react-icons/io";
 import Product from "../../components/Product";
 import S from "../../style/pages/main";
@@ -50,7 +50,7 @@ export default class Main extends Component {
                 to={{
                   pathname: `/category/${item.title}`,
                 }}
-                style={{ textTransform: 'uppercase' }}
+                style={{ textTransform: "uppercase" }}
               >
                 {item.title}
               </NavLink>
@@ -75,17 +75,16 @@ export default class Main extends Component {
               ))}
             </div>
             <Paginition
-              previousLabel={'previous'}
-              nextLabel={'next'}
-              breakLabel={'...'}
-              breakClassName={'break-me'}
+              previousLabel="Previous"
+              nextLabel="Next"
+              breakLabel="..."
+              breakClassName="dots"
               pageCount={this.state.pageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
               onPageChange={this.handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'}
+              pageClassName="pageNumber"
+              containerClassName={"pagination"}
+              subContainerClassName={"pages"}
+              activeClassName={"page-active"}
             />
           </div>
           <div className="video__banner">
