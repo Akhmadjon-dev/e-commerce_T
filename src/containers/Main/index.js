@@ -88,7 +88,7 @@ export default class Main extends Component {
               nextLabel="Next"
               breakLabel="..."
               breakClassName="dots"
-              pageCount={products.length}
+              pageCount={Math.ceil(products.length / pageSize)}
               onPageChange={this.handlePageClick}
               pageClassName="pageNumber"
               containerClassName={"pagination"}
