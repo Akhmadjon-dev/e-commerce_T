@@ -44,11 +44,11 @@ export default class Main extends Component {
           </div>
           <div className="main__title">
             {categories.map((item) => (
-              <NavLink className='nav__link'
+              <NavLink
+                className="nav__link"
                 key={item.id}
                 to={{
                   pathname: `/category/${item.title}`,
-                  state: "shuni ichidan olish ham mumkin",
                 }}
                 style={{ textTransform: 'uppercase' }}
               >

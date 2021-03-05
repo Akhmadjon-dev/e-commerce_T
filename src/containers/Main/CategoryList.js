@@ -24,6 +24,10 @@ export default class CategoryList extends Component {
     this.setState({ type })
   }
 
+  typeHandler = (type) => {
+    this.setState({ type });
+  };
+
   render() {
     console.log(this.state);
     const { type, categories } = this.state;
