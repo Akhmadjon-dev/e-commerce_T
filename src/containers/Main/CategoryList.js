@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import products from "../../db/products";
 import categories from "../../db/categories";
 
+
+
 export default class CategoryList extends Component {
   state = {
     type: "soap",
@@ -17,6 +19,9 @@ export default class CategoryList extends Component {
     console.log(this.props.match.params.type, "mathchhhcohas");
     const type = this.props.match.params.type;
     this.setState({ type, products, categories });
+  }
+  typeHandler = type => {
+    this.setState({ type })
   }
 
   typeHandler = (type) => {
@@ -40,14 +45,8 @@ export default class CategoryList extends Component {
             </div>
           </div>
           <div className="main__title">
-            {categories.map((i) => (
-              <button
-                style={{ textTransform: "capitalize" }}
-                onClick={() => this.typeHandler(i.title)}
-              >
-                {i.title}
-              </button>
-            ))}
+            {categories.map(i => (
+              <button style={{ textTransform: 'uppercase' }} className={type === i.title && 'active__button'} onClick={() => this.typeHandler(i.title)}>{i.title}</button>))}
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">

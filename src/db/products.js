@@ -7,7 +7,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 25600,
     weight: 500,
-    description: "Bu juda ajoyib ovqat mazzzaaa",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 4,
   },
   {
@@ -18,7 +18,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 2600,
     weight: 200,
-    description: "Bu juda shirin ovqat mazzzaaa",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 4,
   },
   {
@@ -29,7 +29,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 18000,
     weight: 500,
-    description: "Bu juda shirin  mazali",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 5,
   },
   {
@@ -40,7 +40,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 10000,
     weight: 100,
-    description: "Bu  boladi",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 2,
   },
   {
@@ -63,7 +63,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
     weight: 800,
-    description: "Bu  vohima yorvaradi",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 5,
   },
   {
@@ -98,7 +98,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
     weight: 800,
-    description: "Bu  vohima yorvaradi",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 5,
   },
   {
@@ -109,7 +109,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
     weight: 800,
-    description: "Bu  vohima yorvaradi",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 5,
   },
   {
@@ -120,7 +120,7 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
     weight: 800,
-    description: "Bu  vohima yorvaradi",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 5,
   },
   {
@@ -131,7 +131,164 @@ export default [
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
     weight: 800,
-    description: "Bu  vohima yorvaradi",
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 13,
+    category: "soap",
+    title: "lag'mon",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 25600,
+    weight: 500,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 4,
+  },
+  {
+    id: 14,
+    category: "lunch",
+    title: "tuxum",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 2600,
+    weight: 200,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 4,
+  },
+  {
+    id: 15,
+    category: "dinner",
+    title: "osh",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 18000,
+    weight: 500,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 16,
+    category: "xachapuri",
+    title: "makaron",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 10000,
+    weight: 100,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 2,
+  },
+  {
+    id: 17,
+    category: "lunch",
+    title: "somsa",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description:
+      "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 18,
+    category: "breakfast",
+    title: "somsa",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 19,
+    category: "dinner",
+    title: "grill",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description:
+      "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 20,
+    category: "dessert",
+    title: "qora shahzoda",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description:
+      "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 21,
+    category: "drinks",
+    title: "cocaCola",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 22,
+    category: "drinks",
+    title: "fanta",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 23,
+    category: "drinks",
+    title: "sarbast",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 24,
+    category: "drinks",
+    title: "qibray",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 25,
+    category: "salads",
+    title: "svejiy",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
+    rate: 5,
+  },
+  {
+    id: 24,
+    category: "salads",
+    title: "shoxona salad",
+    img:
+      "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
+    price: 24000,
+    weight: 800,
+    description: "Описание мраморной говядины, состоящее из нескольких преложений. Можно наполнить.",
     rate: 5,
   },
 ];

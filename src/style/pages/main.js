@@ -54,6 +54,7 @@ S.Main = styled.main`
     color:white;
     border:none;
     outline:none;
+    cursor:pointer;
   }
 }
 .main__banner2{
@@ -82,6 +83,7 @@ S.Main = styled.main`
     color:white;
     border:none;
     outline:none;
+    cursor:pointer;
   }
 }
 .main__products{
@@ -94,7 +96,7 @@ S.Main = styled.main`
     // margin:40px auto;
     display:flex;
     flex-wrap:wrap; 
-    justify-content:space-between;
+    justify-content:start;
   }
   .main__products__title{
     height:20px;
@@ -116,9 +118,30 @@ S.Main = styled.main`
   margin:20px auto;
   justify-content:space-between;
   align-items:center;
+  button{
+    font-family: TT Hoves;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23.3333px;
+    line-height: 27px;
+    color: #4F4F4F;
+    cursor:pointer;
+  }
+  .active__button{
+    padding:5px 10px;
+    background: #00AC4E;
+    border-radius: 5px;
+    color:white;
+    cursor:pointer;
+  }
   .nav__link{
     text-decoration:none;
-    color:
+    font-family: TT Hoves;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 23.3333px;
+    line-height: 27px;
+    color: #4F4F4F;
   }
   button{
     border:none;

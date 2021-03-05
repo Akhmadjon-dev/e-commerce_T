@@ -4,12 +4,12 @@ import color from "../colors";
 const S = {};
 
 S.Product = styled.div`
+margin-right:35px;
 .item{
     width:205px;
     height:328px;
     color:black;
     margin-bottom:30px;
-
     h4{
         margin:0;
     }
