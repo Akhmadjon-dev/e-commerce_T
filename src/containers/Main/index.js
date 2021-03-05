@@ -32,10 +32,12 @@ export default class Main extends Component {
   };
   handlePageClick = (pageNumber) => {
     console.log(pageNumber, "pagiantionnnnn");
+    this.setState({ pageNumber: pageNumber.selected });
   };
   render() {
     const { products, pageSize, pageNumber } = this.state;
     let data = pagination(products, pageSize, pageNumber);
+    console.log(data, "dataaaaa");
     return (
       <S.Main>
         <div className="main">
@@ -86,13 +88,24 @@ export default class Main extends Component {
               nextLabel="Next"
               breakLabel="..."
               breakClassName="dots"
-              pageCount={this.state.pageNumber}
+              pageCount={products.length}
               onPageChange={this.handlePageClick}
               pageClassName="pageNumber"
               containerClassName={"pagination"}
               subContainerClassName={"pages"}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={2}
+              initialPage={1}
               activeClassName={"page-active"}
             />
+            <select
+              onChange={(e) => this.setState({ pageSize: e.target.value })}
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
           </div>
           <div className="video__banner">
             <img className="video__img" src={video__banner} alt="" />
