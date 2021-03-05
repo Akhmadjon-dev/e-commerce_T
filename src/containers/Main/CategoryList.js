@@ -5,22 +5,28 @@ import S from "../../style/pages/main";
 import bannerImage from "../../assets/img/banner/image.jpg";
 import { Link } from "react-router-dom";
 import products from "../../db/products";
+import categories from "../../db/categories";
+
 
 
 export default class CategoryList extends Component {
   state = {
     type: "soap",
+    categories: [],
     products: [],
   };
   componentDidMount() {
     console.log(this.props.match.params.type, "mathchhhcohas");
     const type = this.props.match.params.type;
-    this.setState({ type, products });
+    this.setState({ type, products, categories });
+  }
+  typeHandler = type => {
+    this.setState({ type })
   }
 
   render() {
     console.log(this.state);
-    const { type } = this.state;
+    const { type, categories } = this.state;
     return (
       <S.Main>
         <div className="main">
@@ -35,17 +41,11 @@ export default class CategoryList extends Component {
             </div>
           </div>
           <div className="main__title">
-            <button >СУПЫ</button>
-            <button>ХАЧАПУРИ</button>
-            <button>ХАЧАПУРИ</button>
-            <button>ХАЧАПУРИ</button>
-            <button>ХАЧАПУРИ</button>
+            {categories.map(i => (
+              <button style={{ textTransform: 'uppercase' }} className={type === i.title && 'active__button'} onClick={() => this.typeHandler(i.title)}>{i.title}</button>))}
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">
-            <div className="main__products__title">
-              <h3>Все товары категории</h3>
-            </div>
             <div className="main__products__list">
               {products
                 .filter((item) => item.category === type)
