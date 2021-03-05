@@ -9,11 +9,14 @@ import video__banner from "../../assets/img/banner/video__banner.png";
 import { NavLink } from "react-router-dom";
 import products from "../../db/products";
 import categories from "../../db/categories";
+import pagination from "../../utils/pagination";
 
 export default class Main extends Component {
   state = {
     category: "all",
     products: [],
+    pageNumber: 1,
+    pageSize: 4,
   };
 
   componentDidMount() {
@@ -27,8 +30,12 @@ export default class Main extends Component {
     this.props.history.push(`/category/${item}`);
     console.log(item);
   };
+  handlePageClick = (pageNumber) => {
+    console.log(pageNumber, "pagiantionnnnn");
+  };
   render() {
-    const { products } = this.state;
+    const { products, pageSize, pageNumber } = this.state;
+    let data = pagination(products, pageSize, pageNumber);
     return (
       <S.Main>
         <div className="main">
@@ -62,7 +69,7 @@ export default class Main extends Component {
               <h3>Все товары</h3>
             </div>
             <div className="main__products__list">
-              {products.map((item) => (
+              {data.map((item) => (
                 <Product
                   key={item.id}
                   title={item.title}
@@ -79,7 +86,7 @@ export default class Main extends Component {
               nextLabel="Next"
               breakLabel="..."
               breakClassName="dots"
-              pageCount={this.state.pageCount}
+              pageCount={this.state.pageNumber}
               onPageChange={this.handlePageClick}
               pageClassName="pageNumber"
               containerClassName={"pagination"}
