@@ -20,14 +20,36 @@ export default class SignIn extends Component {
     this.setState((prevState) => ({ isShow: !prevState.isShow }));
   };
 
-  inputHandler = (e) => {
-    const { name, value } = e.target;
-    this.setState((prevState) => ({
-      ...prevState,
-      data: { ...prevState.data, [name]: value },
-    }));
+  // inputHandler = (e) => {
+  //   const { name, value } = e.target;
+  //   this.setState((prevState) => ({
+  //     ...prevState,
+  //     data: { ...prevState.data, [name]: value },
+  //   }));
 
+  inputHandler = ({ target: input }) => {
+    const errors = { ...this.state.errors };
+
+    const errorMsg = this.validateProperty(input);
+
+    if (errorMsg) errors[input.name] = errorMsg;
+    else delete errors[input.name];
+
+    console.log(errors, "input error");
+    const data = { ...this.state.data };
+    data[input.name] = input.value;
+
+    this.setState({ data, errors });
     console.log(this.state.data);
+  };
+
+  validateProperty = ({ name, value }) => {
+    if (name === "phone") {
+      if (value.trim() === "") return "Phone is required";
+    }
+    if (name === "password") {
+      if (value.trim() === "") return "Password is required";
+    }
   };
 
   validate = () => {
