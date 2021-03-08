@@ -16,7 +16,7 @@ export default class Main extends Component {
     category: "all",
     products: [],
     pageNumber: 1,
-    pageSize: 4,
+    pageSize: 4
   };
 
   componentDidMount() {
@@ -31,16 +31,20 @@ export default class Main extends Component {
     console.log(item);
   };
   handlePageClick = (pageNumber) => {
-    console.log(pageNumber, "pagiantionnnnn");
     this.setState({ pageNumber: pageNumber.selected });
   };
   render() {
     const { products, pageSize, pageNumber } = this.state;
     let data = pagination(products, pageSize, pageNumber);
-    console.log(data, "dataaaaa");
     return (
       <S.Main>
         <div className="main">
+          <div className='search'>
+            <form>
+              <input type='text' placeholder='search ...' />
+              <button >Search</button>
+            </form>
+          </div>
           <div className="main__banner">
             <div className="main__banner__text">
               <h1>Подарок на первый заказ.</h1>
@@ -83,29 +87,32 @@ export default class Main extends Component {
                 />
               ))}
             </div>
-            <Paginition
-              previousLabel="Previous"
-              nextLabel="Next"
-              breakLabel="..."
-              breakClassName="dots"
-              pageCount={Math.ceil(products.length / pageSize)}
-              onPageChange={this.handlePageClick}
-              pageClassName="pageNumber"
-              containerClassName={"pagination"}
-              subContainerClassName={"pages"}
-              pageRangeDisplayed={5}
-              marginPagesDisplayed={2}
-              initialPage={1}
-              activeClassName={"page-active"}
-            />
-            <select
-              onChange={(e) => this.setState({ pageSize: e.target.value })}
-            >
-              <option value="5">5</option>
-              <option value="10">10</option>
-              <option value="20">20</option>
-              <option value="50">50</option>
-            </select>
+            <div className='paginiton'>
+              <Paginition
+                previousLabel="Previous"
+                nextLabel="Next"
+                breakLabel="..."
+                breakClassName="dots"
+                pageCount={Math.ceil(products.length / pageSize)}
+                onPageChange={this.handlePageClick}
+                pageClassName="pageNumber"
+                containerClassName={"pagination"}
+                subContainerClassName={"pages"}
+                pageRangeDisplayed={5}
+                marginPagesDisplayed={2}
+                initialPage={1}
+                activeClassName={"page-active"}
+              />
+              <select
+                onChange={(e) => this.setState({ pageSize: e.target.value })}
+              >
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
+            </div>
+
           </div>
           <div className="video__banner">
             <img className="video__img" src={video__banner} alt="" />

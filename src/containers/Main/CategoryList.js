@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Paginition from "react-paginate";
 import { IoIosArrowForward } from "react-icons/io";
 import Product from "../../components/Product";
 import S from "../../style/pages/main";
@@ -6,6 +7,8 @@ import bannerImage from "../../assets/img/banner/image.jpg";
 import { Link } from "react-router-dom";
 import products from "../../db/products";
 import categories from "../../db/categories";
+import pagination from "../../utils/pagination";
+
 
 
 
@@ -14,23 +17,24 @@ export default class CategoryList extends Component {
     type: "soap",
     categories: [],
     products: [],
+    pageNumber: 1,
+    pageSize: 4,
   };
   componentDidMount() {
-    console.log(this.props.match.params.type, "mathchhhcohas");
     const type = this.props.match.params.type;
     this.setState({ type, products, categories });
   }
   typeHandler = type => {
     this.setState({ type })
   }
-
-  typeHandler = (type) => {
-    this.setState({ type });
+  handlePageClick = (pageNumber) => {
+    this.setState({ pageNumber: pageNumber.selected });
   };
 
   render() {
-    console.log(this.state);
-    const { type, categories } = this.state;
+    const { type, categories, pageNumber, pageSize } = this.state;
+    let data = pagination(products, pageSize, pageNumber);
+
     return (
       <S.Main>
         <div className="main">
@@ -51,7 +55,7 @@ export default class CategoryList extends Component {
           </div>
           <div className="main__products">
             <div className="main__products__list">
-              {products
+              {data
                 .filter((item) => item.category === type)
                 .map((item) => (
                   <Product
@@ -64,6 +68,31 @@ export default class CategoryList extends Component {
                     weight={item.weight}
                   />
                 ))}
+            </div>
+            <div className='paginiton'>
+              <Paginition
+                previousLabel="Previous"
+                nextLabel="Next"
+                breakLabel="..."
+                breakClassName="dots"
+                pageCount={Math.ceil(products.length / pageSize)}
+                onPageChange={this.handlePageClick}
+                pageClassName="pageNumber"
+                containerClassName={"pagination"}
+                subContainerClassName={"pages"}
+                pageRangeDisplayed={5}
+                marginPagesDisplayed={2}
+                initialPage={1}
+                activeClassName={"page-active"}
+              />
+              <select
+                onChange={(e) => this.setState({ pageSize: e.target.value })}
+              >
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
             </div>
           </div>
         </div>

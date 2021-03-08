@@ -10,12 +10,38 @@ S.Main = styled.main`
   width:100%;
   height:100%;
 }
+.search{
+  width:80%;
+  height:100px;
+  margin:0 auto;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  input{
+    padding:0;
+    border:1px solid #00AC4E;
+    outline:none;
+    width:600px;
+    height:30px;
+    border-radius:5px;
+    padding-left:20px;
+  }
+  button{
+    width:100px;
+    height:30px;
+    margin-left:50px;
+    background-color: #00AC4E;
+    color:white;
+    outline:none;
+    border:none;
+    border-radius:5px;
+  }
+}
 .main__banner{
   width: 90%;
   height:250px;
   background-color: #eee;
   margin:0 auto;
-  margin-top:60px;
   border-radius:15px;
   display:flex;
   justify-content:space-between;
@@ -90,6 +116,18 @@ S.Main = styled.main`
   width:90%;
   height:100%;
   margin:0 auto;
+  .paginiton{
+    width:100%;
+    height:60px;
+    align-items:center;
+    justify-content:center;
+    display:flex;
+    select{
+      width:50px;
+      height:30px;
+      margin-left:50px;
+    }
+  }
   .main__products__list{
     width:100%;
     height:100%;
