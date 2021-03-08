@@ -3,6 +3,7 @@ import { MdClose } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
 import { VscKey } from "react-icons/vsc";
+import Joi from "joi-browser";
 import SignUp from "./SignUp";
 import { Signin } from "../style/index";
 
@@ -14,6 +15,11 @@ export default class SignIn extends Component {
       // phone: "Phone is required",
       // password: "Password is required",
     },
+  };
+
+  schema = {
+    phone: Joi.string().required().label("Phone"),
+    password: Joi.string().required().label("Password"),
   };
 
   modalHandler = () => {
@@ -53,14 +59,24 @@ export default class SignIn extends Component {
   };
 
   validate = () => {
+    const { error } = Joi.validate(this.state.data, this.schema, {
+      abortEarly: false,
+    });
+
+    if (!error) return null;
     const errors = {};
-    const { data } = this.state;
-
-    if (data.password.trim() === "") errors.password = "Password is required";
-    if (data.phone.trim() === "") errors.phone = "Phone is required";
-
-    return Object.keys(errors).length === 0 ? null : errors;
+    for (let item of error.details) errors[item.path[0]] = item.message;
+    return errors;
   };
+  // validate = () => {
+  //   const errors = {};
+  //   const { data } = this.state;
+
+  //   if (data.password.trim() === "") errors.password = "Password is required";
+  //   if (data.phone.trim() === "") errors.phone = "Phone is required";
+
+  //   return Object.keys(errors).length === 0 ? null : errors;
+  // };
 
   formHandler = (e) => {
     e.preventDefault();
