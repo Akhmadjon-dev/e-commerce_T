@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Paginition from 'react-paginate'
+import Paginition from "react-paginate";
 import { IoIosArrowForward } from "react-icons/io";
 import Product from "../../components/Product";
 import S from "../../style/pages/main";
@@ -9,11 +9,14 @@ import video__banner from "../../assets/img/banner/video__banner.png";
 import { NavLink } from "react-router-dom";
 import products from "../../db/products";
 import categories from "../../db/categories";
+import pagination from "../../utils/pagination";
 
 export default class Main extends Component {
   state = {
     category: "all",
     products: [],
+    pageNumber: 1,
+    pageSize: 4,
   };
 
   componentDidMount() {
@@ -27,8 +30,14 @@ export default class Main extends Component {
     this.props.history.push(`/category/${item}`);
     console.log(item);
   };
+  handlePageClick = (pageNumber) => {
+    console.log(pageNumber, "pagiantionnnnn");
+    this.setState({ pageNumber: pageNumber.selected });
+  };
   render() {
-    const { products } = this.state;
+    const { products, pageSize, pageNumber } = this.state;
+    let data = pagination(products, pageSize, pageNumber);
+    console.log(data, "dataaaaa");
     return (
       <S.Main>
         <div className="main">
@@ -50,7 +59,7 @@ export default class Main extends Component {
                 to={{
                   pathname: `/category/${item.title}`,
                 }}
-                style={{ textTransform: 'uppercase' }}
+                style={{ textTransform: "uppercase" }}
               >
                 {item.title}
               </NavLink>
@@ -62,7 +71,7 @@ export default class Main extends Component {
               <h3>Все товары</h3>
             </div>
             <div className="main__products__list">
-              {products.map((item) => (
+              {data.map((item) => (
                 <Product
                   key={item.id}
                   title={item.title}
@@ -75,18 +84,28 @@ export default class Main extends Component {
               ))}
             </div>
             <Paginition
-              previousLabel={'previous'}
-              nextLabel={'next'}
-              breakLabel={'...'}
-              breakClassName={'break-me'}
-              pageCount={this.state.pageCount}
-              marginPagesDisplayed={2}
-              pageRangeDisplayed={5}
+              previousLabel="Previous"
+              nextLabel="Next"
+              breakLabel="..."
+              breakClassName="dots"
+              pageCount={Math.ceil(products.length / pageSize)}
               onPageChange={this.handlePageClick}
-              containerClassName={'pagination'}
-              subContainerClassName={'pages pagination'}
-              activeClassName={'active'}
+              pageClassName="pageNumber"
+              containerClassName={"pagination"}
+              subContainerClassName={"pages"}
+              pageRangeDisplayed={5}
+              marginPagesDisplayed={2}
+              initialPage={1}
+              activeClassName={"page-active"}
             />
+            <select
+              onChange={(e) => this.setState({ pageSize: e.target.value })}
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
           </div>
           <div className="video__banner">
             <img className="video__img" src={video__banner} alt="" />
