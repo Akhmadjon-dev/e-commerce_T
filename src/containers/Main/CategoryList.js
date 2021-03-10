@@ -9,33 +9,31 @@ import products from "../../db/products";
 import categories from "../../db/categories";
 import pagination from "../../utils/pagination";
 
-
-
-
 export default class CategoryList extends Component {
   state = {
     type: "soap",
     categories: [],
     products: [],
-    pageNumber: 1,
+    pageNumber: 0,
     pageSize: 5,
   };
   componentDidMount() {
     const type = this.props.match.params.type;
+
     this.setState({ type, products, categories });
   }
-  typeHandler = type => {
-    this.setState({ type, pageNumber: 1 })
-  }
+  typeHandler = (type) => {
+    this.setState({ type, pageNumber: 0 });
+  };
   handlePageClick = (pageNumber) => {
     this.setState({ pageNumber: pageNumber.selected });
   };
 
   render() {
     const { type, categories, pageNumber, pageSize, products } = this.state;
-    const foo = products.filter((item) => item.category === type)
-    let data = pagination(foo, pageSize, pageNumber);
-    console.log(data, foo)
+    const filtered = products.filter((i) => i.category === type);
+    let data = pagination(filtered, pageSize, pageNumber);
+    console.log(data, filtered, this.state);
 
     return (
       <S.Main>
@@ -51,33 +49,39 @@ export default class CategoryList extends Component {
             </div>
           </div>
           <div className="main__title">
-            {categories.map(i => (
-              <button style={{ textTransform: 'uppercase' }} className={type === i.title && 'active__button'} onClick={() => this.typeHandler(i.title)}>{i.title}</button>))}
+            {categories.map((i) => (
+              <button
+                style={{ textTransform: "uppercase" }}
+                className={type === i.title && "active__button"}
+                onClick={() => this.typeHandler(i.title)}
+              >
+                {i.title}
+              </button>
+            ))}
             <IoIosArrowForward className="bigger" />
           </div>
           <div className="main__products">
             <div className="main__products__list">
-              {data
-                .map((item) => (
-                  <Product
-                    key={item.id}
-                    title={item.title}
-                    price={item.price}
-                    rate={item.rate}
-                    description={item.description}
-                    img={item.img}
-                    weight={item.weight}
-                  />
-                ))}
+              {data.map((item) => (
+                <Product
+                  key={item.id}
+                  title={item.title}
+                  price={item.price}
+                  rate={item.rate}
+                  description={item.description}
+                  img={item.img}
+                  weight={item.weight}
+                />
+              ))}
             </div>
-            {foo.length > pageSize && (
-              <div className='paginiton'>
+            {filtered.length > pageSize && (
+              <div className="paginiton">
                 <Paginition
                   previousLabel="Previous"
                   nextLabel="Next"
                   breakLabel="..."
                   breakClassName="dots"
-                  pageCount={Math.ceil(foo.length / pageSize)}
+                  pageCount={Math.ceil(filtered.length / pageSize)}
                   onPageChange={this.handlePageClick}
                   pageClassName="pageNumber"
                   containerClassName={"pagination"}
@@ -85,10 +89,13 @@ export default class CategoryList extends Component {
                   pageRangeDisplayed={5}
                   marginPagesDisplayed={2}
                   initialPage={pageNumber}
+                  forcePage={pageNumber}
                   activeClassName={"page-active"}
                 />
                 <select
-                  onChange={(e) => this.setState({ pageSize: e.target.value })}
+                  onChange={(e) =>
+                    this.setState({ pageSize: e.target.value, pageNumber: 0 })
+                  }
                 >
                   <option value="5">5</option>
                   <option value="10">10</option>
