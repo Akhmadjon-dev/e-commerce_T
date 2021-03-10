@@ -16,7 +16,8 @@ export default class Main extends Component {
     category: "all",
     products: [],
     pageNumber: 1,
-    pageSize: 4
+    pageSize: 4,
+    searchTerm: ''
   };
 
   componentDidMount() {
@@ -34,14 +35,19 @@ export default class Main extends Component {
     this.setState({ pageNumber: pageNumber.selected });
   };
   render() {
-    const { products, pageSize, pageNumber } = this.state;
+    const { products, pageSize, pageNumber, searchTerm } = this.state;
     let data = pagination(products, pageSize, pageNumber);
+    console.log(this.state)
     return (
       <S.Main>
         <div className="main">
           <div className='search'>
             <form>
-              <input type='text' placeholder='search ...' />
+              <input
+                type='text'
+                placeholder='search ...'
+                onChange={(event) => this.setState({ searchTerm: event.target.value })}
+              />
               <button >Search</button>
             </form>
           </div>
@@ -75,7 +81,13 @@ export default class Main extends Component {
               <h3>Все товары</h3>
             </div>
             <div className="main__products__list">
-              {data.map((item) => (
+              {data.filter((item) => {
+                if (searchTerm == '') {
+                  return item
+                } else if (item.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+                  return item
+                }
+              }).map((item) => (
                 <Product
                   key={item.id}
                   title={item.title}

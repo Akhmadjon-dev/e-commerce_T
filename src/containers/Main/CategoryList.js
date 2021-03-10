@@ -18,22 +18,24 @@ export default class CategoryList extends Component {
     categories: [],
     products: [],
     pageNumber: 1,
-    pageSize: 4,
+    pageSize: 5,
   };
   componentDidMount() {
     const type = this.props.match.params.type;
     this.setState({ type, products, categories });
   }
   typeHandler = type => {
-    this.setState({ type })
+    this.setState({ type, pageNumber: 1 })
   }
   handlePageClick = (pageNumber) => {
     this.setState({ pageNumber: pageNumber.selected });
   };
 
   render() {
-    const { type, categories, pageNumber, pageSize } = this.state;
-    let data = pagination(products, pageSize, pageNumber);
+    const { type, categories, pageNumber, pageSize, products } = this.state;
+    const foo = products.filter((item) => item.category === type)
+    let data = pagination(foo, pageSize, pageNumber);
+    console.log(data, foo)
 
     return (
       <S.Main>
@@ -56,7 +58,6 @@ export default class CategoryList extends Component {
           <div className="main__products">
             <div className="main__products__list">
               {data
-                .filter((item) => item.category === type)
                 .map((item) => (
                   <Product
                     key={item.id}
@@ -69,31 +70,33 @@ export default class CategoryList extends Component {
                   />
                 ))}
             </div>
-            <div className='paginiton'>
-              <Paginition
-                previousLabel="Previous"
-                nextLabel="Next"
-                breakLabel="..."
-                breakClassName="dots"
-                pageCount={Math.ceil(products.length / pageSize)}
-                onPageChange={this.handlePageClick}
-                pageClassName="pageNumber"
-                containerClassName={"pagination"}
-                subContainerClassName={"pages"}
-                pageRangeDisplayed={5}
-                marginPagesDisplayed={2}
-                initialPage={1}
-                activeClassName={"page-active"}
-              />
-              <select
-                onChange={(e) => this.setState({ pageSize: e.target.value })}
-              >
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-              </select>
-            </div>
+            {foo.length > pageSize && (
+              <div className='paginiton'>
+                <Paginition
+                  previousLabel="Previous"
+                  nextLabel="Next"
+                  breakLabel="..."
+                  breakClassName="dots"
+                  pageCount={Math.ceil(foo.length / pageSize)}
+                  onPageChange={this.handlePageClick}
+                  pageClassName="pageNumber"
+                  containerClassName={"pagination"}
+                  subContainerClassName={"pages"}
+                  pageRangeDisplayed={5}
+                  marginPagesDisplayed={2}
+                  initialPage={pageNumber}
+                  activeClassName={"page-active"}
+                />
+                <select
+                  onChange={(e) => this.setState({ pageSize: e.target.value })}
+                >
+                  <option value="5">5</option>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                </select>
+              </div>
+            )}
           </div>
         </div>
       </S.Main>
