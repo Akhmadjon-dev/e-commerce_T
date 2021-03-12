@@ -4,6 +4,7 @@ import Story from './History'
 import image from '../../assets/img/main/image.png'
 import data from '../../assets/img/main/data.png'
 import history from '../../assets/img/main/history.png'
+import { NavLink } from 'react-router-dom'
 
 
 export default class Personal extends Component {
@@ -15,12 +16,12 @@ export default class Personal extends Component {
         return (
             <ContentApp>
                 {isShow ? (<Story></Story>) : <><div className='top'>
-                    <div className='history'>
+                    <div className='history' >
                         <img src={history} />
                     </div>
-                    <div className='data' onClick={() => this.setState({ isShow: !(this.state.isShow) })}>
+                    <NavLink to='/data' className='data' >
                         <img src={data} />
-                    </div>
+                    </NavLink>
 
                 </div>
                     <main>

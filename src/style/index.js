@@ -74,6 +74,9 @@ h3{
 .top{
   display:flex;
   margin-left:15%;
+  .data2{
+    margin-right:80px;
+  }
     .history{
       width:138px;
       height:109px;
@@ -89,7 +92,7 @@ h3{
     }
   }
   .main{
-    .aside{
+    .aside,.article{
       width:100%;
       min-height:200px;
       margin-top:30px;
@@ -682,6 +685,13 @@ h4{
   border-radius:15px;
   box-shadow: 0px 0px 17.7465px rgba(0, 0, 0, 0.12);
   z-index:1000;
+  .inputs{
+    p{
+      margin:0;
+      padding:0;
+      color:red;
+    }
+  }
   }
   
   .radio__input{

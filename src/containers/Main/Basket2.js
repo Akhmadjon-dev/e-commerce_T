@@ -3,13 +3,16 @@ import { ContentApp } from '../../style'
 import { MdClose } from 'react-icons/md'
 import image from '../../assets/img/main/image.png'
 import Basket from './Basket3'
+import Joi from "joi-browser";
 
 
 export default class Basket2 extends Component {
     state = {
         isShow: false,
         count: 0,
-        count2: 0
+        count2: 0,
+        data: { name: "", phone: "", address: "", deliver: "" },
+        errors: {},
     }
     modalHandler = () => {
         this.setState((prevState) => ({ isShow: !prevState.isShow }))
@@ -26,8 +29,70 @@ export default class Basket2 extends Component {
     decrementHandle2 = () => {
         this.setState({ count2: this.state.count2 - 1 })
     }
+
+    schema = {
+        phone: Joi.string().required().label("Name"),
+        password: Joi.string().required().label("TextArea"),
+    };
+
+    inputHandler = ({ target: input }) => {
+        const errors = { ...this.state.errors };
+
+        const errorMsg = this.validateProperty(input);
+
+        if (errorMsg) errors[input.name] = errorMsg;
+        else delete errors[input.name];
+
+        console.log(errors, "input error");
+        const data = { ...this.state.data };
+        data[input.name] = input.value;
+
+        this.setState({ data, errors });
+        console.log(this.state.data);
+    };
+
+    validateProperty = ({ name, value }) => {
+        if (name === "name") {
+            if (value.trim() === "") return "FIO is required";
+        }
+        if (name === "phone") {
+            if (value.trim() === "") return "Phone is required";
+        }
+        if (name === "address") {
+            if (value.trim() === "") return "Address is required";
+        }
+        if (name === "deliver") {
+            if (value.trim() === "") return "Deliver is required";
+        }
+    };
+
+    validate = () => {
+        const { error } = Joi.validate(this.state.data, this.schema, {
+            abortEarly: false,
+        });
+
+        if (!error) return null;
+        const errors = {};
+        for (let item of error.details) errors[item.path[0]] = item.message;
+        return errors;
+    };
+
+    formHandler = (e) => {
+        e.preventDefault();
+
+        const errors = this.validate();
+
+        console.log(errors, "errors coming!!!!");
+
+        this.setState({ errors: errors || {} });
+
+        if (errors) return;
+
+        console.log("form submitted");
+    };
+
     render() {
-        const { isShow, count, count2 } = this.state;
+        const { isShow, count, count2, data, errors } = this.state;
 
         return (
             <ContentApp>
@@ -79,7 +144,7 @@ export default class Basket2 extends Component {
                         </div>
                     </aside>
                     <article>
-                        <form action=''>
+                        <form action='' onSubmit={this.formHandler} >
                             <p>
                                 <label>Район доставки</label>
                                 <select placeholder='Выбрать'>
@@ -92,15 +157,37 @@ export default class Basket2 extends Component {
                             </p>
                             <p>
                                 <label>ФИО</label>
-                                <input type="text" placeholder='Введите Ваше полное имя' />
+                                <input
+                                    type="text"
+                                    placeholder='Введите Ваше полное имя'
+                                    name='name'
+                                    autoFocus
+                                    value={data.name}
+                                    onChange={this.inputHandler}
+                                />
+                                <p>{errors.name}</p>
                             </p>
                             <p>
                                 <label>Телефон</label>
-                                <input type="tel" placeholder='+380' />
+                                <input
+                                    type="tel"
+                                    placeholder='+380'
+                                    name='phone'
+                                    value={data.phone}
+                                    onChange={this.inputHandler}
+                                />
+                                <p>{errors.phone}</p>
                             </p>
                             <p>
                                 <label>Адрес доставки</label>
-                                <input type="text" placeholder='Введите адрес доставки' />
+                                <input
+                                    type="text"
+                                    placeholder='Введите адрес доставки'
+                                    name='address'
+                                    value={data.address}
+                                    onChange={this.inputHandler}
+                                />
+                                <p>{errors.address}</p>
                             </p>
                             <p>
                                 <label>Способ оплаты</label>
@@ -111,11 +198,17 @@ export default class Basket2 extends Component {
                             </p>
                             {isShow && <p >
                                 <label>Адрес доставки</label>
-                                <input type="text" placeholder='Введите адрес доставки' />
+                                <input
+                                    type="text"
+                                    placeholder='Введите адрес доставки'
+                                    name='deliver'
+                                    value={data.deliver}
+                                    onChange={this.inputHandler}
+                                />
                             </p>}
 
                             {!isShow && <p className='link' onClick={this.modalHandler}>Добавить комментарий.</p>}
-                            <button onClick={this.modalHandler}>Оформить заказ</button>
+                            <button onClick={this.modalHandler} >Оформить заказ</button>
                         </form>
                     </article>
                 </main>}
