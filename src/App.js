@@ -11,6 +11,7 @@ import { StyledApp } from "./style/index";
 import Reviews from "./components/Reviews";
 import Basket from "./containers/Main/Basket";
 import Personal from "./containers/Main/Personal";
+import History from './containers/Main/History'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/content" component={Content} />
           <Route exact path="/cart" component={Personal} />
           <Route exact path="/reservation" component={Basket} />
+          <Route exact path="/data" component={History} />
         </Switch>
         <Footer />
       </StyledApp>
