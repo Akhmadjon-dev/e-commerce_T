@@ -14,9 +14,19 @@ export default class Content extends Component {
   state = {
     isShow: false,
     tab: "about",
+    range: 1000,
   };
   modalHandler = (tab) => {
     this.setState({ tab });
+  };
+  rangeHandler = ({ target }) => {
+    console.log(target.value, target.name);
+    if (target.value < 1000) {
+      this.setState({ range: 1000 });
+    } else {
+      this.setState({ range: target.value });
+    }
+    console.log(this.state.range);
   };
 
   render() {
@@ -121,8 +131,17 @@ export default class Content extends Component {
             </span>
             <div className="range">
               {" "}
-              0<input type="range" min="1" max="50" value="25" />
-              3000
+              0
+              <input
+                onChange={this.rangeHandler}
+                type="range"
+                name="range"
+                min="0"
+                max="3000"
+                value={this.state.range}
+                defaultValue="1000"
+              />
+              {this.state.range ? this.state.range : "3000"}
             </div>
             <span>Осталось 1988 RUB до бесплатной доставки</span>
           </div>
