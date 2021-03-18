@@ -14,7 +14,7 @@ import pagination from "../../utils/pagination";
 export default class Main extends Component {
   state = {
     category: "all",
-    products: [],
+    products: products,
     pageNumber: 0,
     pageSize: 4,
     searchTerm: "",
@@ -38,7 +38,6 @@ export default class Main extends Component {
     const { products, pageSize, pageNumber, searchTerm } = this.state;
     let data = pagination(products, pageSize, pageNumber);
     console.log("paingation nnnnnn", data);
-    console.log(this.state);
     return (
       <S.Main>
         <div className="main">
@@ -95,15 +94,16 @@ export default class Main extends Component {
                   }
                 })
                 .map((item) => (
-                  <Product
-                    key={item.id}
-                    title={item.title}
-                    price={item.price}
-                    rate={item.rate}
-                    description={item.description}
-                    img={item.img}
-                    weight={item.weight}
-                  />
+                  // <Product
+                  //   key={item.id}
+                  //   title={item.title}
+                  //   price={item.price}
+                  //   rate={item.rate}
+                  //   description={item.description}
+                  //   img={item.img}
+                  //   weight={item.weight}
+                  // />
+                  <Product key={item.id} data={item} />
                 ))}
             </div>
             {products.length > pageSize && (
