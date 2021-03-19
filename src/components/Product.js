@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import S from "../style/pages/product";
 import { RiStarSFill } from "react-icons/ri";
 import productImage from "../assets/img/main/productImage.png";
@@ -25,7 +25,12 @@ export default function Product({
           <h4>{price} ₽/кг</h4>
           <p>За{weight}гр.</p>
         </div>
-        <Link className="button" to="/content">
+        <Link className="button" to={{
+          pathname: '/content',
+          state: {
+            from: { title }
+          }
+        }}>
           В корзину
         </Link>
       </div>
