@@ -2,7 +2,7 @@ export default [
   {
     id: 1,
     category: "soap",
-    title: "lag'mon",
+    title: "barak",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 25600,
@@ -13,7 +13,7 @@ export default [
   {
     id: 2,
     category: "lunch",
-    title: "tuxum",
+    title: "hot lunch",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 2600,
@@ -24,7 +24,7 @@ export default [
   {
     id: 3,
     category: "dinner",
-    title: "osh",
+    title: "suzma",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 18000,
@@ -46,7 +46,7 @@ export default [
   {
     id: 5,
     category: "lunch",
-    title: "somsa",
+    title: "dxopka somsa",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
@@ -126,7 +126,7 @@ export default [
   {
     id: 12,
     category: "drinks",
-    title: "qibray",
+    title: "aroq",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
@@ -137,7 +137,7 @@ export default [
   {
     id: 13,
     category: "soap",
-    title: "lag'mon",
+    title: "barak",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 25600,
@@ -159,7 +159,7 @@ export default [
   {
     id: 15,
     category: "dinner",
-    title: "osh",
+    title: "suzma",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 18000,
@@ -170,7 +170,7 @@ export default [
   {
     id: 16,
     category: "xachapuri",
-    title: "makaron",
+    title: "lavash",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 10000,
@@ -181,7 +181,7 @@ export default [
   {
     id: 17,
     category: "lunch",
-    title: "somsa",
+    title: "go'mma",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
@@ -193,7 +193,7 @@ export default [
   {
     id: 18,
     category: "breakfast",
-    title: "somsa",
+    title: "qotirma",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,
@@ -261,7 +261,7 @@ export default [
   {
     id: 24,
     category: "drinks",
-    title: "qibray",
+    title: "sarbast",
     img:
       "https://cdn.pixabay.com/photo/2014/11/05/15/57/salmon-518032__340.jpg",
     price: 24000,

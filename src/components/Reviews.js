@@ -70,7 +70,6 @@ export default class Reviews extends Component {
     return (
       <form onSubmit={this.formHandler} className="review">
         <div className="header">
-          <MdClose onClick={this.props.closeHandler} className="close" />
           <h4>Добавить отзыв</h4>
           <div className="like">
             <p>Ваша оценка:</p>
