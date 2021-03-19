@@ -3,15 +3,12 @@ import S from "../style/pages/product";
 import { RiStarSFill } from "react-icons/ri";
 import productImage from "../assets/img/main/productImage.png";
 import { Link } from "react-router-dom";
+import { Context } from "../store/context";
 
-export default function Product({
-  title,
-  img,
-  price,
-  description,
-  weight,
-  rate,
-}) {
+export default function Product({ data }) {
+  const [context, setContext] = useContext(Context);
+  const { title, img, price, description, weight, rate } = data;
+  console.log(context, "length");
   return (
     <S.Product>
       <div className="item">
@@ -32,7 +29,14 @@ export default function Product({
           }
         }}>
           В корзину
-        </Link>
+        </Link> */}
+        <p
+          onClick={() => setContext([...context, data])}
+          className="button"
+          to="/content"
+        >
+          В корзину
+        </p>
       </div>
     </S.Product>
   );
