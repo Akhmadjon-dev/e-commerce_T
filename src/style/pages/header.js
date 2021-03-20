@@ -5,12 +5,12 @@ const S = {};
 
 S.Header = styled.div`
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.12);
-  width:100%;
-  .hamburger{
-    display:none;
+  width: 100%;
+  .hamburger {
+    display: none;
   }
-  .d-none{
-    display:none;
+  .d-none {
+    display: none;
   }
   nav {
     width: 90%;
@@ -35,9 +35,9 @@ S.Header = styled.div`
       margin-left: 10px;
     }
   }
-  .header__link{
+  .header__link {
     color: #333333;
-    text-decoration:none;
+    text-decoration: none;
   }
   .header__nav {
     width: 45%;
@@ -68,16 +68,25 @@ S.Header = styled.div`
     align-items: center;
   }
   .phone {
-    font-size:20px;
+    font-size: 20px;
     color: ${color.mainGreen};
     cursor: pointer;
   }
   .user,
   .shoppingCart {
-    font-size:24px;
+    font-size: 24px;
     color: ${color.mainGreen};
     cursor: pointer;
     margin-right: 10px;
+  }
+  .cart__block {
+    position: relative;
+  }
+  .cart__num {
+    position: absolute;
+    top: -10px;
+    right: 0;
+    font-size: 14px;
   }
   @media screen and (max-width: 1024px) {
     nav {
@@ -98,7 +107,7 @@ S.Header = styled.div`
       line-height: 12px;
       margin: 0 auto;
     }
-    .header__tel{
+    .header__tel {
       display: none;
     }
     .header__nav {
@@ -107,9 +116,9 @@ S.Header = styled.div`
     }
   }
   @media screen and (max-width: 550px) {
-    .hamburger{
-      display:block;
-      font-size:24px;
+    .hamburger {
+      display: block;
+      font-size: 24px;
     }
     nav {
       height: 60px;
@@ -117,8 +126,8 @@ S.Header = styled.div`
       line-height: 12px;
       margin: 0 auto;
     }
-    .header__nav{
-      display:none;
+    .header__nav {
+      display: none;
     }
     .header__nav {
       padding: 0 10px;
