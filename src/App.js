@@ -11,9 +11,9 @@ import { StyledApp } from "./style/index";
 import Reviews from "./components/Reviews";
 import Basket from "./containers/Main/Basket";
 import Personal from "./containers/Main/Personal";
-import History from './containers/Main/History'
+import History from "./containers/Main/History";
 import { productContext } from "./components/productContext";
-import product from './db/products'
+import product from "./db/products";
 
 function App() {
   return (
@@ -27,8 +27,8 @@ function App() {
             <Route exact path="/deliver" component={Dostavka} />
             <Route exact path="/oplata" component={Oplata} />
             <Route exact path="/poddershka" component={Support} />
-            <Route exact path="/content" component={Content} />
-            <Route exact path="/cart" component={Personal} />
+            <Route exact path="/personal" component={Personal} />
+            <Route exact path="/cart" component={Content} />
             <Route exact path="/reservation" component={Basket} />
             <Route exact path="/data" component={History} />
           </Switch>

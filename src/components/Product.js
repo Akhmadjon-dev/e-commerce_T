@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import S from "../style/pages/product";
 import { RiStarSFill } from "react-icons/ri";
 import productImage from "../assets/img/main/productImage.png";
@@ -22,14 +22,18 @@ export default function Product({ data }) {
           <h4>{price} ₽/кг</h4>
           <p>За{weight}гр.</p>
         </div>
-        <Link className="button" to={{
-          pathname: '/content',
-          state: {
-            from: { title }
-          }
-        }}>
+        {/* <Link
+          className="button"
+          to={{
+            pathname: "/content",
+            state: {
+              from: { title },
+            },
+          }}
+        >
           В корзину
-        </Link> */}
+        </Link>{" "} */}
+
         <p
           onClick={() => setContext([...context, data])}
           className="button"
