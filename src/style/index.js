@@ -275,50 +275,7 @@ main{
   article{
     width:47.5%;
     min-height:70vh;
-   form{
-     width:100%;
-     min-height:70vh;
-     p{
-       display:flex;
-       flex-direction:column;
-       margin-bottom:15px;
-       label{
-         margin-bottom:5px;
-         font-family: TT Norms Pro;
-          font-style: normal;
-          font-weight: normal;
-          font-size: 15.6716px;
-          line-height: 24px;
-       }
-       input,select{
-         height:40px;
-         padding-left:10px;
-        background: #FCFCFC;
-        border: 1.1194px solid #EBEBEB;
-        border-radius: 7.11356px;
-        outline:none;
-       }
-     }
-     .link{
-      font-family: TT Norms Pro;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 17.0726px;
-      line-height: 24px;
-      color: #00AC4E;
-      cursor:pointer;
-     }
-     button{
-       display:block;
-       border:none;
-       outline:none;
-       color:white;
-       padding:5px 10px;
-       margin-top:10px;
-      background: #00AC4E;
-      border-radius: 5.59701px;
-     }
-   }
+   
   }
 }
 .main__banner2{
@@ -480,11 +437,65 @@ main{
         line-height: 10px;
       }
     }
+    .about{
+      padding-top:20px;
+    }
     .params{
+      p{
+        margin-top:20px;
+      }
       width:60%;
       display:flex;
       flex-direction:column;
       justify-content:center;
+      form{
+        width:100%;
+        min-height:55vh;
+        padding-top:20px;
+        .review__inputs{
+          display:flex;
+          flex-direction:column;
+          div{
+            display:flex;
+            label{
+              padding-right:30px;
+            }
+            input{
+              outline:none;
+              width:200px;
+              height:30px;
+              padding-left:10px;
+              ::placeholder{
+                font-family: TT Norms Pro;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 12px;
+                color: #C6C6C6;
+              }
+            }
+          }
+        }
+        .link{
+         font-family: TT Norms Pro;
+         font-style: normal;
+         font-weight: 500;
+         font-size: 17.0726px;
+         line-height: 24px;
+         color: #00AC4E;
+         cursor:pointer;
+        }
+        button{
+          display:block;
+          border:none;
+          outline:none;
+          color:white;
+          padding:5px 10px;
+          margin-top:10px;
+         background: #00AC4E;
+         border-radius: 5.59701px;
+        }
+      }
       strong{
         font-family: TT Norms Pro;
         font-style: normal;
