@@ -1,5 +1,4 @@
 import React, { Component, useContext, useState } from "react";
-import { useLocation } from 'react-router'
 import { ContentApp } from "../../style/index";
 import { RiStarSFill, RiShoppingCartLine } from "react-icons/ri";
 
@@ -11,13 +10,10 @@ import { Link, Route, Switch, BrowserRouter } from "react-router-dom";
 import AboutProduct from "../../components/aboutProduct";
 import Reviews from "../../components/Reviews";
 import Params from "../../components/Params";
-import { productContext } from '../../components/productContext';
+import { Context } from '../../store/context'
 
 
 export default function Content() {
-  const location = useLocation();
-  const ism = location.state.from.title;
-  const data = useContext(productContext);
   const [isShow, setIsShow] = useState(false);
   const [tab, setTab] = useState('about');
   const [range, setRange] = useState(1000);
@@ -25,7 +21,6 @@ export default function Content() {
   const modalHandler = (tab) => {
     setTab(tab);
   };
-
   const rangeHandler = ({ target }) => {
     console.log(target.value, target.name);
     if (target.value < 1000) {
@@ -39,12 +34,12 @@ export default function Content() {
   return (
     <ContentApp>
 
-      {data.filter(item => item.title === ism).map(item => (<article>
+      <article>
         <div className="img">
-          <img src={item.img} alt="" />
+          <img src={img} alt="" />
         </div>
         <div className="sell">
-          <strong style={{ marginLeft: "5%" }}>{item.title} {item.weight}гр</strong>
+          <strong style={{ marginLeft: "5%" }}>гр</strong>
           <span style={{ marginLeft: "5%" }}>
             <RiStarSFill className="activeStar" />
             <RiStarSFill className="activeStar" />
@@ -55,7 +50,7 @@ export default function Content() {
           <span style={{ marginLeft: "5%" }}>Кол-во отзывов: 23</span>
           <div className="price">
             <span>Цена за уп.</span>
-            <strong>{count * item.price} ₽</strong>
+            <strong> ₽</strong>
           </div>
           <div className="price">
             <span>Кол-во шт в упаковке</span>
@@ -71,11 +66,11 @@ export default function Content() {
           </div>
           <div className="price">
             <strong>Итого к оплате</strong>
-            <strong>{item.price} ₽</strong>
+            <strong> ₽</strong>
           </div>
           <div className="price">
             <strong>Итого к оплате</strong>
-            <strong>{item.price} ₽</strong>
+            <strong> ₽</strong>
           </div>
           <div className="price">
             <button className="price__button kupit">Купить</button>
@@ -84,7 +79,7 @@ export default function Content() {
             </button>
           </div>
         </div></article>
-      ))}
+
 
 
       <aside>
