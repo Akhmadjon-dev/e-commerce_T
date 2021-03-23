@@ -42,6 +42,7 @@ export default function Personal() {
                                 </div>
                                 <strong>{item.price} ₽</strong>
                             </div>
+
                         ))}
                     </div>
                 </div>
