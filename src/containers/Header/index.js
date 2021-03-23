@@ -45,7 +45,7 @@ export default function Header(props) {
           <Link className="header__link" to="/oplata">
             Оплата
           </Link>
-          <Link to="/reservation" className="header__link">
+          <Link to="/data" className="header__link">
             Бронь стола
           </Link>
         </nav>
@@ -55,9 +55,9 @@ export default function Header(props) {
         </div>
         <div className="header__sign">
           <>
-            <AiOutlineUser className="user" onClick={() => setContext(!isShow)} />
+            <AiOutlineUser className="user" onClick={() => setIsShow(!isShow)} />
           </>
-          {usercontext.isShow && <SignIn modalHandler={modalHandler} />}
+          {signin && <SignIn exitHandler={modalHandler} />}
 
           <div className="cart__block">
             <Link className="cart__icon" to="/reservation">
@@ -70,3 +70,63 @@ export default function Header(props) {
     </S.Header>
   );
 }
+// export default class Header extends Component {
+//   state = {
+//     isShow: false,
+//   };
+//   modalHandler = () => {
+//     this.setState((prevState) => ({ isShow: !prevState.isShow }));
+//   };
+//   render() {
+//     const { isShow } = this.state;
+//     console.log(isShow);
+//     return (
+//       <S.Header>
+//         {isShow && <SignIn changeHandler={this.modalHandler} />}
+//         <nav>
+//           <HiOutlineMenuAlt2 className="hamburger" />
+//           <div className="header__logo">
+//             <Link to="/">
+//               <img src={logo} alt="" />
+//             </Link>
+//             <Link to="/">
+//               <img src={logo1} alt="" />
+//             </Link>
+//           </div>
+//           <nav className="header__nav">
+//             <Link className="header__link" to="/">
+//               Меню
+//             </Link>
+//             <Link className="header__link" to="/deliver">
+//               Доставка
+//             </Link>
+//             <Link className="header__link" to="/oplata">
+//               Оплата
+//             </Link>
+//             <Link to="/reservation" className="header__link">
+//               Бронь стола
+//             </Link>
+//           </nav>
+//           <div className="header__num">
+//             <FiPhone className="phone" />
+//             <p className="header__tel">+7 (831) 282-60-00</p>
+//           </div>
+//           <div className="header__sign">
+//             <Link to="/personal">
+//               <AiOutlineUser className="user" />
+//             </Link>
+
+//             <div>
+//             <Link to="/cart">
+//               <RiShoppingCartLine className="shoppingCart" />
+//             </Link>
+//             <span className="cart__num">
+//               {context.length}
+//             </span>
+//             </div>
+//           </div>
+//         </nav>
+//       </S.Header>
+//     );
+//   }
+// }
