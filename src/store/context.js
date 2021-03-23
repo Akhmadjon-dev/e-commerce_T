@@ -6,12 +6,11 @@ const MainData = ({ children }) => {
   const [context, setContext] = useState([]);
   const decrement = (id) => {
     const updated = context.find((item) => item.id === id);
+    let result = [...context];
     updated.size -= 1;
-    let index = context.indexOf(updated);
-    const result = context.splice(index, 1, updated);
-    // setdata()
-    // setdata(data)
-    console.log(result, updated, index, "yyyooooo");
+    let index = result.indexOf(updated);
+    result.splice(index, 1, updated);
+    setContext(result);
   };
   return (
     <Context.Provider value={{ context, setContext, decrement }}>

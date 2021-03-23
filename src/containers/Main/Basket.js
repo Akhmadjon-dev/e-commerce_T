@@ -1,4 +1,10 @@
-import React, { Component, useContext, useState } from "react";
+import React, {
+  Component,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 import { ContentApp } from "../../style/index";
 import { MdClose } from "react-icons/md";
 import bonus from "../../assets/img/main/Group.png";
@@ -11,15 +17,22 @@ import { Link } from "react-router-dom";
 
 export default function Basket() {
   const { context, setContext, decrement } = useContext(Context);
-  // const [state, setState] = useState(context)
+  const [state, setState] = useState(context);
   const [isShow, setIsShow] = useState(false);
+  const contexts = useMemo(() => context.map((item) => item), [context]);
+  useEffect(() => {
+    setState(context);
+  }, [contexts]);
+
   const modalHandler = () => {
     setIsShow(!isShow);
   };
+
   const filterHandler = (id) => {
     const result = context.filter((item) => item.id !== id);
     setContext(result);
   };
+
   //   const decrement = (id) => {
   //     const data = context.find((item) => item.id === id);
   //     data.size -= 1;
@@ -49,7 +62,7 @@ export default function Basket() {
               <div className="box">
                 <h3>Корзина</h3>
               </div>
-              {context.map((item) => (
+              {state.map((item) => (
                 <div className="box">
                   <MdClose onClick={() => filterHandler(item.id)} />
                   <img src={item.img} alt="" />
