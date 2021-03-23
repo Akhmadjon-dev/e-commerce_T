@@ -7,7 +7,7 @@ import Joi from "joi-browser";
 import SignUp from "./SignUp";
 import { Signin } from "../style/index";
 
-export default function SignIn() {
+export default function SignIn({ exitHandler }) {
   const [isShow, setIsShow] = useState(false)
   const [data, setData] = useState({ phone: "", password: "" })
   const [errors, setErrors] = useState({})
@@ -73,7 +73,7 @@ export default function SignIn() {
       ) : (
         <form onSubmit={formHandler} className="sign">
           <div className="header">
-            <MdClose className="close" />
+            <MdClose className="close" onClick={() => exitHandler} />
             <BiUser className="user" />
             <h4>Войти в личный кабинет</h4>
           </div>
