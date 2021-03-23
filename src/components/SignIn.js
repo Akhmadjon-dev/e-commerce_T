@@ -1,4 +1,4 @@
-import React, { Component, createRef, useState } from "react";
+import React, { Component, createRef, useContext, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
@@ -6,8 +6,10 @@ import { VscKey } from "react-icons/vsc";
 import Joi from "joi-browser";
 import SignUp from "./SignUp";
 import { Signin } from "../style/index";
+import { UserContext } from "../store/userContext";
 
 export default function SignIn({ exitHandler }) {
+  const [usercontext, setUsercontext] = useContext(UserContext)
   const [isShow, setIsShow] = useState(false)
   const [data, setData] = useState({ phone: "", password: "" })
   const [errors, setErrors] = useState({})
@@ -68,12 +70,12 @@ export default function SignIn({ exitHandler }) {
 
   return (
     <Signin>
-      {isShow ? (
+      {usercontext.isShow === 'sign-up' ? (
         <SignUp closeHandler={modalHandler} />
       ) : (
         <form onSubmit={formHandler} className="sign">
           <div className="header">
-            <MdClose className="close" onClick={() => exitHandler} />
+            <MdClose className="close" onClick={() => setUsercontext({ ...usercontext, isShow: '' })} />
             <BiUser className="user" />
             <h4>Войти в личный кабинет</h4>
           </div>
@@ -106,7 +108,7 @@ export default function SignIn({ exitHandler }) {
           <button className="signin__button">Войти</button>
           <p className="signin__p">
             Впервые у нас?
-              <p onClick={modalHandler}>Зарегистрироваться </p>
+              <p onClick={() => setUsercontext({ ...usercontext, isShow: 'sign-up' })}>Зарегистрироваться </p>
           </p>
         </form>
       )}
