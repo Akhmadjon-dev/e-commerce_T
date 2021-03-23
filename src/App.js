@@ -12,6 +12,7 @@ import Reviews from "./components/Reviews";
 import Basket from "./containers/Main/Basket";
 import Personal from "./containers/Main/Personal";
 import History from "./containers/Main/History";
+import SignIn from "./components/SignIn";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/cart" component={Content} />
           <Route exact path="/reservation" component={Basket} />
           <Route exact path="/data" component={History} />
+          <Route exact path="/sign-in" component={SignIn} />
         </Switch>
         <Footer />
       </StyledApp>

@@ -22,22 +22,10 @@ export default function Product({ data }) {
           <h4>{price} ₽/кг</h4>
           <p>За{weight}гр.</p>
         </div>
-        {/* <Link
-          className="button"
-          to={{
-            pathname: "/content",
-            state: {
-              from: { title },
-            },
-          }}
-        >
-          В корзину
-        </Link>{" "} */}
-
         <p
           onClick={() => setContext([...context, data])}
           className="button"
-          to="/content"
+
         >
           В корзину
         </p>

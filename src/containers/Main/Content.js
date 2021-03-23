@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { Component, useContext, useState } from "react";
 import { ContentApp } from "../../style/index";
 import { RiStarSFill, RiShoppingCartLine } from "react-icons/ri";
 
@@ -11,10 +11,12 @@ import Reviews from "../../components/Reviews";
 import Params from "../../components/Params";
 import { productContext } from "../../components/productContext";
 import { Context } from "../../store/context";
+import { useLocation } from "react-router";
 
 export default function Content() {
+  const location = useLocation()
   const [context, setContext] = useContext(Context);
-  const data = useContext(productContext);
+  console.log(context)
   const [isShow, setIsShow] = useState(false);
   const [tab, setTab] = useState("about");
   const [range, setRange] = useState(1000);
@@ -22,7 +24,6 @@ export default function Content() {
   const modalHandler = (tab) => {
     setTab(tab);
   };
-
   const rangeHandler = ({ target }) => {
     console.log(target.value, target.name);
     if (target.value < 1000) {
@@ -37,7 +38,8 @@ export default function Content() {
     <ContentApp>
       {context.length ? (
         <>
-          {context.map((item) => (
+          {context.filter((item) => item.id === location.id).map(item =>
+          (
             <article>
               <div className="img">
                 <img src={item.img} alt="" />
