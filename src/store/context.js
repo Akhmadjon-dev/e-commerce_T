@@ -3,9 +3,20 @@ import React, { createContext, useState } from "react";
 const Context = createContext();
 
 const MainData = ({ children }) => {
-  const [data, setData] = useState([]);
+  const [context, setContext] = useState([]);
+  const decrement = (id) => {
+    const updated = context.find((item) => item.id === id);
+    updated.size -= 1;
+    let index = context.indexOf(updated);
+    const result = context.splice(index, 1, updated);
+    // setdata()
+    // setdata(data)
+    console.log(result, updated, index, "yyyooooo");
+  };
   return (
-    <Context.Provider value={[data, setData]}>{children}</Context.Provider>
+    <Context.Provider value={{ context, setContext, decrement }}>
+      {children}
+    </Context.Provider>
   );
 };
 

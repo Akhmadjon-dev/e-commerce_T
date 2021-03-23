@@ -16,9 +16,9 @@ import SendEmail from "../../components/SendEmail";
 export default function Header(props) {
   const [isShow, setIsShow] = useState(false);
   const [signin, setSignin] = useState(false);
-  const [context, setContext] = useContext(Context);
-  const [usercontext, setUsercontext] = useContext(UserContext)
-  console.log(usercontext.isShow)
+  const { context, setContext, decrement } = useContext(Context);
+  const [usercontext, setUsercontext] = useContext(UserContext);
+  console.log(usercontext.isShow);
 
   const modalHandler = () => {
     setIsShow(!isShow);
@@ -57,25 +57,28 @@ export default function Header(props) {
         </div>
         <div className="header__sign">
           {Object.keys(usercontext.user).length !== 0 ? (
-            <Link to='/personal'>
+            <Link to="/personal">
               <AiOutlineUser className="user" />
             </Link>
-
           ) : (
             <>
-              <AiOutlineUser className="user" onClick={() => setUsercontext({ ...usercontext, isShow: 'sign-in' })} />
+              <AiOutlineUser
+                className="user"
+                onClick={() =>
+                  setUsercontext({ ...usercontext, isShow: "sign-in" })
+                }
+              />
             </>
-
           )}
-          {usercontext.isShow === 'sign-in' && <SignIn />}
-          {usercontext.isShow === 'sign-up' && <SignUp />}
-          {usercontext.isShow === 'send-email' && <SendEmail />}
+          {usercontext.isShow === "sign-in" && <SignIn />}
+          {usercontext.isShow === "sign-up" && <SignUp />}
+          {usercontext.isShow === "send-email" && <SendEmail />}
 
           <div className="cart__block">
             <Link className="cart__icon" to="/reservation">
               <RiShoppingCartLine className="shoppingCart" />
             </Link>
-            <span className="cart__num">{context.length}</span>
+            <span className="cart__num">{context?.length}</span>
           </div>
         </div>
       </nav>

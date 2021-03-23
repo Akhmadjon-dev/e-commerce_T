@@ -14,9 +14,9 @@ import { Context } from "../../store/context";
 import { useLocation } from "react-router";
 
 export default function Content() {
-  const location = useLocation()
-  const [context, setContext] = useContext(Context);
-  console.log(context)
+  const location = useLocation();
+  const { context, setContext, decrement } = useContext(Context);
+  console.log(context);
   const [isShow, setIsShow] = useState(false);
   const [tab, setTab] = useState("about");
   const [range, setRange] = useState(1000);
@@ -38,67 +38,68 @@ export default function Content() {
     <ContentApp>
       {context.length ? (
         <>
-          {context.filter((item) => item.id === location.id).map(item =>
-          (
-            <article>
-              <div className="img">
-                <img src={item.img} alt="" />
-              </div>
-              <div className="sell">
-                <strong style={{ marginLeft: "5%" }}>
-                  {item.title} {item.weight}гр
-                </strong>
-                <span style={{ marginLeft: "5%" }}>
-                  <RiStarSFill className="activeStar" />
-                  <RiStarSFill className="activeStar" />
-                  <RiStarSFill className="activeStar" />
-                  <RiStarSFill className="activeStar" />
-                  <RiStarSFill className="noactiveStar" />
-                </span>
-                <span style={{ marginLeft: "5%" }}>Кол-во отзывов: 23</span>
-                <div className="price">
-                  <span>Цена за уп.</span>
-                  <strong>{count * item.price} ₽</strong>
+          {context
+            .filter((item) => item.id === location.id)
+            .map((item) => (
+              <article>
+                <div className="img">
+                  <img src={item.img} alt="" />
                 </div>
-                <div className="price">
-                  <span>Кол-во шт в упаковке</span>
-                  <strong>4 шт.</strong>
-                </div>
-                <div className="price">
-                  <span>Количество</span>
-                  <div className="button">
-                    <p
-                      onClick={() => setCount(count - 1)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      -
-                    </p>
-                    <p>{count > 0 ? count : 0}шт</p>
-                    <p
-                      onClick={() => setCount(count + 1)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      +
-                    </p>
+                <div className="sell">
+                  <strong style={{ marginLeft: "5%" }}>
+                    {item.title} {item.weight}гр
+                  </strong>
+                  <span style={{ marginLeft: "5%" }}>
+                    <RiStarSFill className="activeStar" />
+                    <RiStarSFill className="activeStar" />
+                    <RiStarSFill className="activeStar" />
+                    <RiStarSFill className="activeStar" />
+                    <RiStarSFill className="noactiveStar" />
+                  </span>
+                  <span style={{ marginLeft: "5%" }}>Кол-во отзывов: 23</span>
+                  <div className="price">
+                    <span>Цена за уп.</span>
+                    <strong>{count * item.price} ₽</strong>
+                  </div>
+                  <div className="price">
+                    <span>Кол-во шт в упаковке</span>
+                    <strong>4 шт.</strong>
+                  </div>
+                  <div className="price">
+                    <span>Количество</span>
+                    <div className="button">
+                      <p
+                        onClick={() => setCount(count - 1)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        -
+                      </p>
+                      <p>{count > 0 ? count : 0}шт</p>
+                      <p
+                        onClick={() => setCount(count + 1)}
+                        style={{ cursor: "pointer" }}
+                      >
+                        +
+                      </p>
+                    </div>
+                  </div>
+                  <div className="price">
+                    <strong>Итого к оплате</strong>
+                    <strong>{item.price} ₽</strong>
+                  </div>
+                  <div className="price">
+                    <strong>Итого к оплате</strong>
+                    <strong>{item.price} ₽</strong>
+                  </div>
+                  <div className="price">
+                    <button className="price__button kupit">Купить</button>
+                    <button className="price__button">
+                      <RiShoppingCartLine />
+                    </button>
                   </div>
                 </div>
-                <div className="price">
-                  <strong>Итого к оплате</strong>
-                  <strong>{item.price} ₽</strong>
-                </div>
-                <div className="price">
-                  <strong>Итого к оплате</strong>
-                  <strong>{item.price} ₽</strong>
-                </div>
-                <div className="price">
-                  <button className="price__button kupit">Купить</button>
-                  <button className="price__button">
-                    <RiShoppingCartLine />
-                  </button>
-                </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
 
           <aside>
             <div className="params">

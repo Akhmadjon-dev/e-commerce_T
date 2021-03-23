@@ -18,7 +18,7 @@ export default function CategoryList(props) {
     pageNumber: 0,
     pageSize: 5,
   });
-  const [context, setContext] = useContext(Context);
+  const { context, setContext, decrement } = useContext(Context);
   useEffect(() => {
     const type = props.match.params.type;
     console.log(product, "effect", category);
