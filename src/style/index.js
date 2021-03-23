@@ -275,7 +275,6 @@ main{
   article{
     width:47.5%;
     min-height:70vh;
-   
   }
 }
 .main__banner2{
@@ -535,6 +534,33 @@ main{
     justify-content:space-between;
     margin: auto;
     margin-bottom:30px;
+    form{
+      font-family: TT Norms Pro;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 15.6716px;
+      line-height: 24px;
+      select{
+        margin-left:20px;
+        outline:none;
+      }
+      p{
+        margin:10px 5px;
+      }
+      input{
+        width:90%;
+        height:30px;
+        outline:none;
+      }
+      button{
+        padding:10px 20px;
+        outline:none;
+        border:none;
+        color:white;
+        background: #00AC4E;
+        border-radius: 5.59701px;
+      }
+    }
     .button{
       width:80px;
       height:30px;

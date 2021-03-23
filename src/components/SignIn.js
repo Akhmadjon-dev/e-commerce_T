@@ -1,4 +1,4 @@
-import React, { Component, createRef } from "react";
+import React, { Component, createRef, useState } from "react";
 import { MdClose } from "react-icons/md";
 import { BiUser } from "react-icons/bi";
 import { FiPhone } from "react-icons/fi";
@@ -7,49 +7,36 @@ import Joi from "joi-browser";
 import SignUp from "./SignUp";
 import { Signin } from "../style/index";
 
-export default class SignIn extends Component {
-  state = {
-    isShow: false,
-    data: { phone: "", password: "" },
-    errors: {
-      // phone: "Phone is required",
-      // password: "Password is required",
-    },
-  };
+export default function SignIn() {
+  const [isShow, setIsShow] = useState(false)
+  const [data, setData] = useState({ phone: "", password: "" })
+  const [errors, setErrors] = useState({})
 
-  schema = {
+  const schema = {
     phone: Joi.string().required().label("Phone"),
     password: Joi.string().required().label("Password"),
   };
 
-  modalHandler = () => {
-    this.setState((prevState) => ({ isShow: !prevState.isShow }));
+  const modalHandler = () => {
+    this.setIsShow(!isShow);
   };
 
-  // inputHandler = (e) => {
-  //   const { name, value } = e.target;
-  //   this.setState((prevState) => ({
-  //     ...prevState,
-  //     data: { ...prevState.data, [name]: value },
-  //   }));
+  const inputHandler = ({ target: input }) => {
+    const errors = { ...errors };
 
-  inputHandler = ({ target: input }) => {
-    const errors = { ...this.state.errors };
-
-    const errorMsg = this.validateProperty(input);
+    const errorMsg = validateProperty(input);
 
     if (errorMsg) errors[input.name] = errorMsg;
     else delete errors[input.name];
 
-    console.log(errors, "input error");
-    const data = { ...this.state.data };
+    const data = { ...data };
     data[input.name] = input.value;
 
-    this.setState({ data, errors });
-    console.log(this.state.data);
+    setData(data);
+    setErrors(errors);
   };
 
-  validateProperty = ({ name, value }) => {
+  const validateProperty = ({ name, value }) => {
     if (name === "phone") {
       if (value.trim() === "") return "Phone is required";
     }
@@ -58,8 +45,8 @@ export default class SignIn extends Component {
     }
   };
 
-  validate = () => {
-    const { error } = Joi.validate(this.state.data, this.schema, {
+  const validate = () => {
+    const { error } = Joi.validate(data, schema, {
       abortEarly: false,
     });
 
@@ -68,83 +55,61 @@ export default class SignIn extends Component {
     for (let item of error.details) errors[item.path[0]] = item.message;
     return errors;
   };
-  // validate = () => {
-  //   const errors = {};
-  //   const { data } = this.state;
 
-  //   if (data.password.trim() === "") errors.password = "Password is required";
-  //   if (data.phone.trim() === "") errors.phone = "Phone is required";
-
-  //   return Object.keys(errors).length === 0 ? null : errors;
-  // };
-
-  formHandler = (e) => {
+  const formHandler = (e) => {
     e.preventDefault();
 
-    const errors = this.validate();
-
-    console.log(errors, "errors coming!!!!");
-
-    this.setState({ errors: errors || {} });
+    const errors = validate();
+    setErrors(errors || {});
 
     if (errors) return;
 
-    console.log("form submitted");
-
-    // let formData = new FormData();
-    // formData.append("phone", phone);
-    // formData.append("password", password);
-
-    // call  server
   };
 
-  render() {
-    const { isShow, data, errors } = this.state;
-    return (
-      <Signin>
-        {isShow ? (
-          <SignUp closeHandler={this.modalHandler} />
-        ) : (
-          <form onSubmit={this.formHandler} className="sign">
-            <div className="header">
-              <MdClose onClick={this.props.changeHandler} className="close" />
-              <BiUser className="user" />
-              <h4>Войти в личный кабинет</h4>
+  return (
+    <Signin>
+      {isShow ? (
+        <SignUp closeHandler={modalHandler} />
+      ) : (
+        <form onSubmit={formHandler} className="sign">
+          <div className="header">
+            <MdClose className="close" />
+            <BiUser className="user" />
+            <h4>Войти в личный кабинет</h4>
+          </div>
+          <div className="inputs">
+            <div>
+              <FiPhone className="tel" />
+              <input
+                onChange={inputHandler}
+                value={data.phone}
+                autoFocus
+                name="phone"
+                type="tel"
+                placeholder="Телефон"
+              />
             </div>
-            <div className="inputs">
-              <div>
-                <FiPhone className="tel" />
-                <input
-                  onChange={this.inputHandler}
-                  value={data.phone}
-                  autoFocus
-                  name="phone"
-                  type="tel"
-                  placeholder="Телефон"
-                />
-              </div>
-              <p>{errors.phone}</p>
-              <div>
-                <VscKey className="kalit" />
-                <input
-                  onChange={this.inputHandler}
-                  value={data.password}
-                  name="password"
-                  type="password"
-                  placeholder="Пароль"
-                />
-              </div>
-              <p>{errors.password}</p>
+            <p>{errors.phone}</p>
+            <div>
+              <VscKey className="kalit" />
+              <input
+                onChange={inputHandler}
+                value={data.password}
+                name="password"
+                type="password"
+                placeholder="Пароль"
+              />
             </div>
-            <p className="link">Забыли пароль?</p>
-            <button className="signin__button">Войти</button>
-            <p className="signin__p">
-              Впервые у нас?
-              <p onClick={this.modalHandler}>Зарегистрироваться </p>
-            </p>
-          </form>
-        )}
-      </Signin>
-    );
-  }
+            <p>{errors.password}</p>
+          </div>
+          <p className="link">Забыли пароль?</p>
+          <button className="signin__button">Войти</button>
+          <p className="signin__p">
+            Впервые у нас?
+              <p onClick={modalHandler}>Зарегистрироваться </p>
+          </p>
+        </form>
+      )}
+    </Signin>
+  );
 }

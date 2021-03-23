@@ -22,13 +22,13 @@ export default function Product({ data }) {
           <h4>{price} ₽/кг</h4>
           <p>За{weight}гр.</p>
         </div>
-        <Link to='/content'
+        <p
           onClick={() => setContext([...context, data])}
           className="button"
 
         >
           В корзину
-        </Link>
+        </p>
       </div>
     </S.Product>
   );

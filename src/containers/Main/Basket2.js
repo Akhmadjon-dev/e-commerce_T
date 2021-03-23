@@ -9,6 +9,7 @@ import Joi from "joi-browser";
 export default class Basket2 extends Component {
     state = {
         isShow: false,
+        noShow: false,
         count: 0,
         count2: 0,
         data: { name: "", phone: "", address: "", deliver: "" },
@@ -17,6 +18,10 @@ export default class Basket2 extends Component {
     modalHandler = () => {
         this.setState((prevState) => ({ isShow: !prevState.isShow }))
     }
+    nomodalHandler = () => {
+        this.setState((prevState) => ({ noShow: !prevState.noShow }))
+    }
+
     incrementHandle = () => {
         this.setState({ count: this.state.count + 1 })
     }
@@ -92,7 +97,7 @@ export default class Basket2 extends Component {
     };
 
     render() {
-        const { isShow, count, count2, data, errors } = this.state;
+        const { noShow, isShow, count, count2, data, errors } = this.state;
 
         return (
             <ContentApp>
@@ -207,7 +212,7 @@ export default class Basket2 extends Component {
                                 />
                             </p>}
 
-                            {!isShow && <p className='link' onClick={this.modalHandler}>Добавить комментарий.</p>}
+                            {!noShow && <p className='link' onClick={this.nomodalHandler}>Добавить комментарий.</p>}
                             <button onClick={this.modalHandler} >Оформить заказ</button>
                         </form>
                     </article>
