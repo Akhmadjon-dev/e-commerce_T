@@ -10,13 +10,15 @@ import { Link } from "react-router-dom";
 import SignIn from "../../components/SignIn";
 import { Context } from "../../store/context";
 import { UserContext } from "../../store/userContext";
+import SignUp from "../../components/SignUp";
+import SendEmail from "../../components/SendEmail";
 
 export default function Header(props) {
   const [isShow, setIsShow] = useState(false);
   const [signin, setSignin] = useState(false);
   const [context, setContext] = useContext(Context);
   const [usercontext, setUsercontext] = useContext(UserContext)
-  console.log(usercontext)
+  console.log(usercontext.isShow)
 
   const modalHandler = () => {
     setIsShow(!isShow);
@@ -54,10 +56,20 @@ export default function Header(props) {
           <p className="header__tel">+7 (831) 282-60-00</p>
         </div>
         <div className="header__sign">
-          <>
-            <AiOutlineUser className="user" onClick={() => setIsShow(!isShow)} />
-          </>
-          {signin && <SignIn exitHandler={modalHandler} />}
+          {Object.keys(usercontext.user).length !== 0 ? (
+            <Link to='/personal'>
+              <AiOutlineUser className="user" />
+            </Link>
+
+          ) : (
+            <>
+              <AiOutlineUser className="user" onClick={() => setUsercontext({ ...usercontext, isShow: 'sign-in' })} />
+            </>
+
+          )}
+          {usercontext.isShow === 'sign-in' && <SignIn />}
+          {usercontext.isShow === 'sign-up' && <SignUp />}
+          {usercontext.isShow === 'send-email' && <SendEmail />}
 
           <div className="cart__block">
             <Link className="cart__icon" to="/reservation">

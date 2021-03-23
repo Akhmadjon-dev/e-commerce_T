@@ -81,7 +81,7 @@ export default class SignUp extends Component {
                 {isShow ? <SendEmail modalHandler={this.modalHandler} /> :
                     <form onSubmit={this.formHandler} className='sign__up'>
                         <div className='header'>
-                            <MdClose onClick={this.props.closeHandler} className='close' />
+                            <MdClose onClick={() => setUsercontext({ ...usercontext, isShow: '' })} className='close' />
                             <BiUser className='user' />
                             <h4>Войти в личный кабинет</h4>
                         </div>

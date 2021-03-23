@@ -12,6 +12,7 @@ import { Link } from 'react-router-dom';
 export default function Basket() {
     const [count, setCount] = useState(1)
     const [context, setContext] = useContext(Context);
+    const [state, setState] = useState(context)
     const [isShow, setIsShow] = useState(false);
     const modalHandler = () => {
         setIsShow(!isShow)
@@ -19,6 +20,25 @@ export default function Basket() {
     const filterHandler = (id) => {
         const result = context.filter(item => item.id !== id)
         setContext(result)
+    }
+    const decrement = (id) => {
+        const data = state.find(item => item.id === id)
+        data.size -= 1
+        let index = state.indexOf(data)
+        const updated = state.splice(index, 1, data);
+        // setState()
+        // setContext(state)
+        console.log(updated, state)
+
+    }
+    const increment = (id) => {
+        const data = context.find(item => item.id === id)
+        data.size += 1
+        let index = context.indexOf(data)
+        context.splice(index, 1, data);
+        setContext(context)
+        console.log(context)
+
     }
 
     return (
@@ -29,7 +49,7 @@ export default function Basket() {
                     <div className='box'>
                         <h3>Корзина</h3>
                     </div>
-                    {context.map(item => (
+                    {state.map(item => (
                         <div className='box'>
                             <MdClose onClick={() => filterHandler(item.id)} />
                             <img src={item.img} alt='' />
@@ -38,11 +58,11 @@ export default function Basket() {
                                 id: item.id
                             }} style={{ textDecoration: 'none', color: 'black' }}>{item.title}</Link>
                             <div className='button'>
-                                <p onClick={() => setCount(count - 1)} style={{ cursor: 'pointer' }}>-</p>
-                                <p>{count}</p>
-                                <p onClick={() => setCount(count + 1)} style={{ cursor: 'pointer' }}>+</p>
+                                <p onClick={() => decrement(item.id)} style={{ cursor: 'pointer' }}>-</p>
+                                <p>{item.size}</p>
+                                <p onClick={() => increment(item.id)} style={{ cursor: 'pointer' }}>+</p>
                             </div>
-                            <strong>{count * item.price} ₽</strong>
+                            <strong>{item.size * item.price} ₽</strong>
                         </div>
                     ))}
                 </div>
@@ -50,7 +70,7 @@ export default function Basket() {
                     <strong style={{ marginLeft: '5%', marginBottom: '20px' }}>Заказ №47593</strong>
                     <div className='basket__price'>
                         <span>Товаров в корзине</span>
-                        <strong>700 ₽</strong>
+                        <strong>{context.reduce((sum, item) => sum + item.price, 0)}</strong>
                     </div>
                     <div className='basket__price'>
                         <span>Промокод</span>
