@@ -12,17 +12,12 @@ import delivery from "../../assets/img/main/delivery.png";
 import Basket2 from "./Basket2";
 import image from "../../assets/img/main/image.png";
 import { Context } from "../../store/context";
-import { remove } from "lodash";
+import { remove, update } from "lodash";
 import { Link } from "react-router-dom";
 
 export default function Basket() {
-  const { context, setContext, decrement } = useContext(Context);
-  const [state, setState] = useState(context);
+  const { context, setContext } = useContext(Context);
   const [isShow, setIsShow] = useState(false);
-  const contexts = useMemo(() => context.map((item) => item), [context]);
-  useEffect(() => {
-    setState(context);
-  }, [contexts]);
 
   const modalHandler = () => {
     setIsShow(!isShow);
@@ -33,22 +28,22 @@ export default function Basket() {
     setContext(result);
   };
 
-  //   const decrement = (id) => {
-  //     const data = context.find((item) => item.id === id);
-  //     data.size -= 1;
-  //     let index = context.indexOf(data);
-  //     const updated = context.splice(index, 1, data);
-  //     // setcontext()
-  //     // setContext(context)
-  //     console.log(updated, context);
-  //   };
+  const decrement = (id) => {
+    const updated = context.find((item) => item.id === id);
+    let result = [...context];
+    updated.size > 0 ? (updated.size -= 1) : (updated.size = 0);
+    let index = result.indexOf(updated);
+    result.splice(index, 1, updated);
+    setContext(result);
+  };
   const increment = (id) => {
-    const data = context.find((item) => item.id === id);
-    data.size += 1;
-    let index = context.indexOf(data);
-    context.splice(index, 1, data);
-    setContext(context);
-    console.log(context);
+    const updated = context.find((item) => item.id === id);
+    let result = [...context];
+    updated.size += 1;
+    // updated.size >= 0 ? updated.size += 1 : updated.size = 0
+    let index = result.indexOf(updated);
+    result.splice(index, 1, updated);
+    setContext(result);
   };
 
   return (
@@ -62,7 +57,7 @@ export default function Basket() {
               <div className="box">
                 <h3>Корзина</h3>
               </div>
-              {state.map((item) => (
+              {context.map((item) => (
                 <div className="box">
                   <MdClose onClick={() => filterHandler(item.id)} />
                   <img src={item.img} alt="" />
