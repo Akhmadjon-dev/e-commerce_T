@@ -96,7 +96,10 @@ export default function Basket() {
               <div className="basket__price">
                 <span>Товаров в корзине</span>
                 <strong>
-                  {context.reduce((sum, item) => sum + item.price, 0)}
+                  {context.reduce(
+                    (sum, item) => sum + item.price * item.size,
+                    0
+                  )}
                 </strong>
               </div>
               <div className="basket__price">
