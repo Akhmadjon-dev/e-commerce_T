@@ -9,10 +9,10 @@ import { Signin } from "../style/index";
 import { UserContext } from "../store/userContext";
 
 export default function SignIn({ exitHandler }) {
-  const [usercontext, setUsercontext] = useContext(UserContext)
-  const [isShow, setIsShow] = useState(false)
-  const [data, setData] = useState({ phone: "", password: "" })
-  const [errors, setErrors] = useState({})
+  const [usercontext, setUsercontext] = useContext(UserContext);
+  const [isShow, setIsShow] = useState(false);
+  const [data, setData] = useState({ phone: "", password: "" });
+  const [errors, setErrors] = useState({});
 
   const schema = {
     phone: Joi.string().required().label("Phone"),
@@ -24,18 +24,18 @@ export default function SignIn({ exitHandler }) {
   };
 
   const inputHandler = ({ target: input }) => {
-    const errors = { ...errors };
+    const error = { ...errors };
 
     const errorMsg = validateProperty(input);
 
-    if (errorMsg) errors[input.name] = errorMsg;
-    else delete errors[input.name];
+    if (errorMsg) error[input.name] = errorMsg;
+    else delete error[input.name];
 
-    const data = { ...data };
-    data[input.name] = input.value;
+    const dat = { ...data };
+    dat[input.name] = input.value;
 
-    setData(data);
-    setErrors(errors);
+    setData(dat);
+    setErrors(error);
   };
 
   const validateProperty = ({ name, value }) => {
@@ -66,16 +66,20 @@ export default function SignIn({ exitHandler }) {
 
     if (errors) return;
 
+    setUsercontext({ ...usercontext, user: data, isShow: "" });
   };
 
   return (
     <Signin>
-      {usercontext.isShow === 'sign-up' ? (
+      {usercontext.isShow === "sign-up" ? (
         <SignUp closeHandler={modalHandler} />
       ) : (
         <form onSubmit={formHandler} className="sign">
           <div className="header">
-            <MdClose className="close" onClick={() => setUsercontext({ ...usercontext, isShow: '' })} />
+            <MdClose
+              className="close"
+              onClick={() => setUsercontext({ ...usercontext, isShow: "" })}
+            />
             <BiUser className="user" />
             <h4>Войти в личный кабинет</h4>
           </div>
@@ -108,7 +112,13 @@ export default function SignIn({ exitHandler }) {
           <button className="signin__button">Войти</button>
           <p className="signin__p">
             Впервые у нас?
-              <p onClick={() => setUsercontext({ ...usercontext, isShow: 'sign-up' })}>Зарегистрироваться </p>
+            <p
+              onClick={() =>
+                setUsercontext({ ...usercontext, isShow: "sign-up" })
+              }
+            >
+              Зарегистрироваться{" "}
+            </p>
           </p>
         </form>
       )}
