@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/context";
 
 export default function Product({ data }) {
-  const { context, setContext, decrement } = useContext(Context);
+  const { context, addProduct } = useContext(Context);
   const { title, img, price, description, weight, rate } = data;
   console.log(context, "length");
   return (
@@ -22,7 +22,7 @@ export default function Product({ data }) {
           <h4>{price} ₽/кг</h4>
           <p>За{weight}гр.</p>
         </div>
-        <p onClick={() => setContext([...context, data])} className="button">
+        <p onClick={() => addProduct(data)} className="button">
           В корзину
         </p>
       </div>
