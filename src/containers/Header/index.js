@@ -18,7 +18,7 @@ export default function Header(props) {
   const [signin, setSignin] = useState(false);
   const { context, setContext, decrement } = useContext(Context);
   const [usercontext, setUsercontext] = useContext(UserContext);
-  console.log(usercontext.isShow);
+  console.log(usercontext, "user contexxttt", Object.values(usercontext.user));
 
   const modalHandler = () => {
     setIsShow(!isShow);
@@ -56,7 +56,7 @@ export default function Header(props) {
           <p className="header__tel">+7 (831) 282-60-00</p>
         </div>
         <div className="header__sign">
-          {Object.keys(usercontext.user).length !== 0 ? (
+          {Object.values(usercontext.user).length ? (
             <Link to="/personal">
               <AiOutlineUser className="user" />
             </Link>
