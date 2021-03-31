@@ -45,7 +45,7 @@ export default function Personal() {
                 <img src={item.img} alt="" />
                 <p>{item.title}</p>
                 <div className="button">
-                  <p>1шт</p>
+                  <p>{item.size}шт</p>
                 </div>
                 <strong>{item.price} ₽</strong>
               </div>
