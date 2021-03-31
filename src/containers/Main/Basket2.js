@@ -1,78 +1,62 @@
-import React, { Component } from 'react'
+import React, { Component, useContext, useState } from 'react'
 import { ContentApp } from '../../style'
 import { MdClose } from 'react-icons/md'
 import image from '../../assets/img/main/image.png'
 import Basket from './Basket3'
 import Joi from "joi-browser";
+import { Link } from 'react-router-dom'
+import { Context } from '../../store/context'
+import { UserContext } from '../../store/userContext'
 
 
-export default class Basket2 extends Component {
-    state = {
-        isShow: false,
-        noShow: false,
-        count: 0,
-        count2: 0,
-        data: { name: "", phone: "", address: "", deliver: "" },
-        errors: {},
-    }
-    modalHandler = () => {
-        this.setState((prevState) => ({ isShow: !prevState.isShow }))
-    }
-    nomodalHandler = () => {
-        this.setState((prevState) => ({ noShow: !prevState.noShow }))
-    }
+export default function Basket2() {
+    const { context, setContext } = useContext(Context);
+    const [usercontext, setUsercontext] = useContext(UserContext);
+    const [isShow, setIsShow] = useState(false);
+    const [noShow, setNoShow] = useState(false);
+    const [data, setData] = useState({ rayon: '', address: "", pul__turi: "" })
+    const [errors, setErrors] = useState({})
+    // const modalHandler = () => {
+    //     setIsShow(!isShow)
+    // }
+    // const nomodalHandler = () => {
+    //     setNoShow(!noShow)
+    // }
 
-    incrementHandle = () => {
-        this.setState({ count: this.state.count + 1 })
-    }
-    decrementHandle = () => {
-        this.setState({ count: this.state.count - 1 })
-    }
-    incrementHandle2 = () => {
-        this.setState({ count2: this.state.count2 + 1 })
-    }
-    decrementHandle2 = () => {
-        this.setState({ count2: this.state.count2 - 1 })
-    }
 
-    schema = {
+    const schema = {
         phone: Joi.string().required().label("Name"),
         password: Joi.string().required().label("TextArea"),
     };
 
-    inputHandler = ({ target: input }) => {
-        const errors = { ...this.state.errors };
+    const inputHandler = ({ target: input }) => {
+        const error = { ...errors };
 
-        const errorMsg = this.validateProperty(input);
+        const errorMsg = validateProperty(input);
 
         if (errorMsg) errors[input.name] = errorMsg;
         else delete errors[input.name];
 
-        console.log(errors, "input error");
-        const data = { ...this.state.data };
-        data[input.name] = input.value;
-
-        this.setState({ data, errors });
-        console.log(this.state.data);
+        const dat = { ...data };
+        dat[input.name] = input.value;
+        setData(dat);
+        setErrors(error);
     };
 
-    validateProperty = ({ name, value }) => {
-        if (name === "name") {
-            if (value.trim() === "") return "FIO is required";
-        }
-        if (name === "phone") {
-            if (value.trim() === "") return "Phone is required";
+    const validateProperty = ({ name, value }) => {
+        if (name === "rayon") {
+            if (value.trim() === "") return "Rayon is required";
         }
         if (name === "address") {
             if (value.trim() === "") return "Address is required";
         }
-        if (name === "deliver") {
-            if (value.trim() === "") return "Deliver is required";
+        if (name === "pul__turi") {
+            if (value.trim() === "") return "puli turi is required";
         }
     };
 
-    validate = () => {
-        const { error } = Joi.validate(this.state.data, this.schema, {
+    const validate = () => {
+        const { error } = Joi.validate(data, schema, {
             abortEarly: false,
         });
 
@@ -82,143 +66,162 @@ export default class Basket2 extends Component {
         return errors;
     };
 
-    formHandler = (e) => {
+    const formHandler = (e) => {
         e.preventDefault();
 
-        const errors = this.validate();
+        // const errors = validate();
+        // setErrors(errors || {});
 
-        console.log(errors, "errors coming!!!!");
+        // if (errors) return;
+        setUsercontext({ ...usercontext, useraddress: data })
+        setIsShow(!isShow)
+        console.log(usercontext, 'formHandlerrrrrrrrrrrrrrr')
 
-        this.setState({ errors: errors || {} });
-
-        if (errors) return;
-
-        console.log("form submitted");
+    };
+    const filterHandler = (id) => {
+        const result = context.filter((item) => item.id !== id);
+        setContext(result);
     };
 
-    render() {
-        const { noShow, isShow, count, count2, data, errors } = this.state;
+    const decrement = (id) => {
+        const updated = context.find((item) => item.id === id);
+        let result = [...context];
+        updated.size > 0 ? (updated.size -= 1) : (updated.size = 0);
+        let index = result.indexOf(updated);
+        result.splice(index, 1, updated);
+        setContext(result);
+    };
+    const increment = (id) => {
+        const updated = context.find((item) => item.id === id);
+        let result = [...context];
+        updated.size += 1;
+        // updated.size >= 0 ? updated.size += 1 : updated.size = 0
+        let index = result.indexOf(updated);
+        result.splice(index, 1, updated);
+        setContext(result);
+    };
 
-        return (
-            <ContentApp>
-                {isShow ? <Basket /> : <main>
-                    <aside>
-                        <div className='basket'>
-                            <h2>Оформление заказа</h2>
-                            <h3>Вы заказали:</h3>
-                            <div className='box'>
-                                <MdClose />
-                                <img src={image} alt='' />
-                                <p>Хачапури</p>
-                                <div className='button'>
-                                    <p onClick={this.decrementHandle} style={{ cursor: 'pointer' }}>-</p>
-                                    <p>{count > 0 ? count : 0}</p>
-                                    <p onClick={this.incrementHandle} style={{ cursor: 'pointer' }}>+</p>
+
+    return (
+        <ContentApp>
+            {isShow ? <Basket /> : <main>
+                <aside>
+                    <div className='basket'>
+                        <h2>Оформление заказа</h2>
+                        <h3>Вы заказали:</h3>
+                        {context.map((item) => (
+                            <div className="box">
+                                <MdClose onClick={() => filterHandler(item.id)} />
+                                <img src={item.img} alt="" />
+                                <Link
+                                    to={{
+                                        pathname: "/cart",
+                                        id: item.id,
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}
+                                >
+                                    {item.title}
+                                </Link>
+                                <div className="button">
+                                    <p
+                                        onClick={() => decrement(item.id)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        -
+                    </p>
+                                    <p>{item.size}</p>
+                                    <p
+                                        onClick={() => increment(item.id)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        +
+                    </p>
                                 </div>
-                                <strong>350 ₽</strong>
+                                <strong>{item.size * item.price} ₽</strong>
                             </div>
-                            <div className='box'>
-                                <MdClose />
-                                <img src={image} alt='' />
-                                <p>Хачапури</p>
-                                <div className='button'>
-                                    <p onClick={this.decrementHandle2} style={{ cursor: 'pointer' }}>-</p>
-                                    <p>{count2 > 0 ? count2 : 0}</p>
-                                    <p onClick={this.incrementHandle2} style={{ cursor: 'pointer' }}>+</p>
-                                </div>
-                                <strong>350 ₽</strong>
+                        ))}
+                    </div>
+                    <div className='basket__bottom'>
+                        <div className='dostavka'>
+                            <button>Доставка</button>
+                            <span>Самовывоз (- 20%)</span>
+                        </div>
+                        <div className='boxs'>
+                            <div className='hisob'>
+                                <strong>Итого</strong>
+                                <strong>700 ₽ </strong>
+                                <strong>Итого к оплате</strong>
+                            </div>
+                            <div className='hisob'>
+                                <strong>Доставка</strong>
+                                <strong>0 ₽ </strong>
+                                <strong>700 ₽</strong>
                             </div>
                         </div>
-                        <div className='basket__bottom'>
-                            <div className='dostavka'>
-                                <button>Доставка</button>
-                                <span>Самовывоз (- 20%)</span>
-                            </div>
-                            <div className='boxs'>
-                                <div className='hisob'>
-                                    <strong>Итого</strong>
-                                    <strong>700 ₽ </strong>
-                                    <strong>Итого к оплате</strong>
-                                </div>
-                                <div className='hisob'>
-                                    <strong>Доставка</strong>
-                                    <strong>0 ₽ </strong>
-                                    <strong>700 ₽</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                    <article>
-                        <form action='' onSubmit={this.formHandler} >
-                            <p>
-                                <label>Район доставки</label>
-                                <select placeholder='Выбрать'>
-                                    <option>Bogot</option>
-                                    <option>Xiva</option>
-                                    <option>Xonqa</option>
-                                    <option>Urganch</option>
-                                    <option>Shovot</option>
-                                </select>
-                            </p>
-                            <p>
-                                <label>ФИО</label>
-                                <input
-                                    type="text"
-                                    placeholder='Введите Ваше полное имя'
-                                    name='name'
-                                    autoFocus
-                                    value={data.name}
-                                    onChange={this.inputHandler}
-                                />
-                                <p>{errors.name}</p>
-                            </p>
-                            <p>
-                                <label>Телефон</label>
-                                <input
-                                    type="tel"
-                                    placeholder='+380'
-                                    name='phone'
-                                    value={data.phone}
-                                    onChange={this.inputHandler}
-                                />
-                                <p>{errors.phone}</p>
-                            </p>
-                            <p>
-                                <label>Адрес доставки</label>
-                                <input
-                                    type="text"
-                                    placeholder='Введите адрес доставки'
-                                    name='address'
-                                    value={data.address}
-                                    onChange={this.inputHandler}
-                                />
-                                <p>{errors.address}</p>
-                            </p>
-                            <p>
-                                <label>Способ оплаты</label>
-                                <select placeholder='Наличные'>
-                                    <option>naqd pul</option>
-                                    <option>plastik</option>
-                                </select>
-                            </p>
-                            {isShow && <p >
-                                <label>Адрес доставки</label>
-                                <input
-                                    type="text"
-                                    placeholder='Введите адрес доставки'
-                                    name='deliver'
-                                    value={data.deliver}
-                                    onChange={this.inputHandler}
-                                />
-                            </p>}
+                    </div>
+                </aside>
+                <article>
+                    <form onSubmit={formHandler}>
+                        <p>
+                            <label>Район доставки</label>
+                            <select name='rayon' onChange={inputHandler}>
+                                <option>Выбрать</option>
+                                <option value='bogot'>Bogot</option>
+                                <option value='xiva'>Xiva</option>
+                                <option value='xonqa'>Xonqa</option>
+                                <option value='urganch'>Urganch</option>
+                                <option value='shovot'>Shovot</option>
+                            </select>
+                            <p>{errors.rayon}</p>
+                        </p>
+                        <p>
+                            <label>ФИО</label>
+                            <input
+                                type="text"
+                                placeholder='Введите Ваше полное имя'
+                                name='name'
+                                readOnly
+                                value={usercontext.personal.ism}
+                            />
 
-                            {!noShow && <p className='link' onClick={this.nomodalHandler}>Добавить комментарий.</p>}
-                            <button onClick={this.modalHandler} >Оформить заказ</button>
-                        </form>
-                    </article>
-                </main>}
+                        </p>
+                        <p>
+                            <label>Телефон</label>
+                            <input
+                                type="tel"
+                                placeholder='+380'
+                                name='phone'
+                                readOnly
+                                value={usercontext.user.phone}
+                            />
 
-            </ContentApp>
-        )
-    }
+                        </p>
+                        <p>
+                            <label>Адрес доставки</label>
+                            <input
+                                type="text"
+                                placeholder='Введите адрес доставки'
+                                name='address'
+                                value={data.address}
+                                onChange={inputHandler}
+                            />
+                            <p>{errors.address}</p>
+                        </p>
+                        <p>
+                            <label>Способ оплаты</label>
+                            <select name='pul__turi' onChange={inputHandler}>
+                                <option>Выбрать</option>
+                                <option value='naqd'>naqd pul</option>
+                                <option value='plastik'>plastik</option>
+                            </select>
+                            <p>{errors.pul__turi}</p>
+                        </p>
+                        <button type='submit'>Оформить заказ</button>
+                    </form>
+                </article>
+            </main>}
+
+        </ContentApp>
+    )
+
 }

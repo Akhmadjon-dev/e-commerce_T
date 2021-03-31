@@ -1,186 +1,146 @@
-import React, { Component } from 'react'
+import React, { Component, useContext, useState } from 'react'
 import { ContentApp } from '../../style'
 import { MdClose } from 'react-icons/md'
 import image from '../../assets/img/main/image.png'
 import Joi from "joi-browser";
+import { Context } from '../../store/context';
+import { Link, useHistory } from 'react-router-dom';
+import { UserContext } from '../../store/userContext';
 
 
-export default class Basket3 extends Component {
-    state = {
-        isShow: false,
-        count: 0,
-        count2: 0,
-        box: true,
-        box2: true,
-        data: { name: "", phone: "" },
-        errors: {},
+export default function Basket3() {
+    const history = useHistory();
+    console.log(history)
+    const { context, setContext } = useContext(Context);
+    const [usercontext, setUsercontext] = useContext(UserContext);
+    const [data, setData] = useState('')
 
-    }
-    modalHandler = () => {
-        this.setState((prevState) => ({ isShow: !prevState.isShow }))
-    }
-    showHandler = () => {
-        this.setState({ box: false })
-    }
-    showHandler2 = () => {
-        this.setState({ box2: false })
-    }
-    incrementHandle = () => {
-        this.setState({ count: this.state.count + 1 })
-    }
-    decrementHandle = () => {
-        this.setState({ count: this.state.count - 1 })
-    }
-    incrementHandle2 = () => {
-        this.setState({ count2: this.state.count2 + 1 })
-    }
-    decrementHandle2 = () => {
-        this.setState({ count2: this.state.count2 - 1 })
-    }
+    const inputHandler = ({ target: input }) => {
+        const dat = input.value;
+        setData(dat)
+        console.log(data)
 
-    schema = {
-        phone: Joi.string().required().label("Name"),
-        password: Joi.string().required().label("TextArea"),
     };
 
-    inputHandler = ({ target: input }) => {
-        const errors = { ...this.state.errors };
 
-        const errorMsg = this.validateProperty(input);
-
-        if (errorMsg) errors[input.name] = errorMsg;
-        else delete errors[input.name];
-
-        console.log(errors, "input error");
-        const data = { ...this.state.data };
-        data[input.name] = input.value;
-
-        this.setState({ data, errors });
-        console.log(this.state.data);
-    };
-
-    validateProperty = ({ name, value }) => {
-        if (name === "fio") {
-            if (value.trim() === "") return "FIO is required";
-        }
-        if (name === "phone") {
-            if (value.trim() === "") return "Phone is required";
-        }
-    };
-
-    validate = () => {
-        const { error } = Joi.validate(this.state.data, this.schema, {
-            abortEarly: false,
-        });
-
-        if (!error) return null;
-        const errors = {};
-        for (let item of error.details) errors[item.path[0]] = item.message;
-        return errors;
-    };
-
-    formHandler = (e) => {
+    const formHandler = (e) => {
         e.preventDefault();
+        setUsercontext({ ...usercontext, useraddress: { ...usercontext.useraddress, pul__turi: data } })
+        console.log(usercontext)
 
-        const errors = this.validate();
-
-        console.log(errors, "errors coming!!!!");
-
-        this.setState({ errors: errors || {} });
-
-        if (errors) return;
-
-        console.log("form submitted");
     };
-    render() {
-        const { isShow, count, count2, box, box2, data, errors } = this.state;
-        console.log(this.state)
-        return (
-            <ContentApp>
-                <main>
-                    <aside>
-                        <div className='basket'>
-                            <h2>Оформление заказа</h2>
-                            <h3>Вы заказали:</h3>
-                            {box && <div className='box'>
-                                <MdClose onClick={this.showHandler} />
-                                <img src={image} alt='' />
-                                <p>Хачапури</p>
-                                <div className='button'>
-                                    <p onClick={this.decrementHandle} style={{ cursor: 'pointer' }}>-</p>
-                                    <p>{count > 0 ? count : 0}</p>
-                                    <p onClick={this.incrementHandle} style={{ cursor: 'pointer' }}>+</p>
+    const filterHandler = (id) => {
+        const result = context.filter((item) => item.id !== id);
+        setContext(result);
+    };
+
+    const decrement = (id) => {
+        const updated = context.find((item) => item.id === id);
+        let result = [...context];
+        updated.size > 0 ? (updated.size -= 1) : (updated.size = 0);
+        let index = result.indexOf(updated);
+        result.splice(index, 1, updated);
+        setContext(result);
+    };
+    const increment = (id) => {
+        const updated = context.find((item) => item.id === id);
+        let result = [...context];
+        updated.size += 1;
+        // updated.size >= 0 ? updated.size += 1 : updated.size = 0
+        let index = result.indexOf(updated);
+        result.splice(index, 1, updated);
+        setContext(result);
+    };
+
+    return (
+        <ContentApp>
+            <main>
+                <aside>
+                    <div className='basket'>
+                        <h2>Оформление заказа</h2>
+                        <h3>Вы заказали:</h3>
+                        {context.map((item) => (
+                            <div className="box">
+                                <MdClose onClick={() => filterHandler(item.id)} />
+                                <img src={item.img} alt="" />
+                                <Link
+                                    to={{
+                                        pathname: "/cart",
+                                        id: item.id,
+                                    }}
+                                    style={{ textDecoration: "none", color: "black" }}
+                                >
+                                    {item.title}
+                                </Link>
+                                <div className="button">
+                                    <p
+                                        onClick={() => decrement(item.id)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        -
+                    </p>
+                                    <p>{item.size}</p>
+                                    <p
+                                        onClick={() => increment(item.id)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        +
+                    </p>
                                 </div>
-                                <strong>350 ₽</strong>
-                            </div>}
-                            <div className='box'>
-                                <MdClose onClick={this.showHandler2} />
-                                <img src={image} alt='' />
-                                <p>Хачапури</p>
-                                <div className='button'>
-                                    <p onClick={this.decrementHandle2} style={{ cursor: 'pointer' }}>-</p>
-                                    <p>{count2 > 0 ? count2 : 0}</p>
-                                    <p onClick={this.incrementHandle2} style={{ cursor: 'pointer' }}>+</p>
-                                </div>
-                                <strong>350 ₽</strong>
+                                <strong>{item.size * item.price} ₽</strong>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='basket__bottom'>
+                        <div className='dostavka'>
+                            <button>Доставка</button>
+                            <span>Самовывоз (- 20%)</span>
+                        </div>
+                        <div className='boxs'>
+                            <div className='hisob'>
+                                <strong>Итого</strong>
+                                <strong>700 ₽ </strong>
+                                <strong>Итого к оплате</strong>
+                            </div>
+                            <div className='hisob'>
+                                <strong>Самовывоз</strong>
+                                <strong>-140  ₽ </strong>
+                                <strong>560 ₽</strong>
                             </div>
                         </div>
-                        <div className='basket__bottom'>
-                            <div className='dostavka'>
-                                <button>Доставка</button>
-                                <span>Самовывоз (- 20%)</span>
-                            </div>
-                            <div className='boxs'>
-                                <div className='hisob'>
-                                    <strong>Итого</strong>
-                                    <strong>700 ₽ </strong>
-                                    <strong>Итого к оплате</strong>
-                                </div>
-                                <div className='hisob'>
-                                    <strong>Самовывоз</strong>
-                                    <strong>-140  ₽ </strong>
-                                    <strong>560 ₽</strong>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
-                    <article>
-                        <form action='' onSubmit={this.formHandler}>
-                            <p>
-                                <label>ФИО</label>
-                                <input
-                                    type="text"
-                                    placeholder='Введите Ваше полное имя'
-                                    name='fio'
-                                    autoFocus
-                                    value={data.name}
-                                    onChange={this.inputHandler}
-                                />
-                                <p>{errors.name}</p>
-                            </p>
-                            <p>
-                                <label>Телефон</label>
-                                <input
-                                    type="tel"
-                                    placeholder='+380'
-                                    name='phone'
-                                    value={data.phone}
-                                    onChange={this.inputHandler}
-                                />
-                                <p>{errors.phone}</p>
-                            </p>
-                            <p>
-                                <label>Когда заберете?</label>
-                                <select>
-                                    <option>В ближайшее время</option>
-                                    <option>plastik</option>
-                                </select>
-                            </p>
-                            <button>Оформить заказ</button>
-                        </form>
-                    </article>
-                </main>
-            </ContentApp>
-        )
-    }
+                    </div>
+                </aside>
+                <article>
+                    <form action='' onSubmit={formHandler}>
+                        <p>
+                            <label>ФИО</label>
+                            <input
+                                type="text"
+                                // placeholder='Введите Ваше полное имя'
+                                name='fio'
+                                value={usercontext.personal.familiya, usercontext.personal.ism, usercontext.personal.otch}
+                            />
+                        </p>
+                        <p>
+                            <label>Телефон</label>
+                            <input
+                                type="tel"
+                                placeholder='+380'
+                                name='phone'
+                                value={usercontext.user.phone}
+                            />
+                        </p>
+                        <p>
+                            <label>Когда заберете?</label>
+                            <select name='pul__turi' onChange={inputHandler}>
+                                <option value='naqd'>naqd</option>
+                                <option value='plastik'>plastik</option>
+                            </select>
+                        </p>
+                        <button onClick={history.push('/data')}>Оформить заказ</button>
+                    </form>
+                </article>
+            </main>
+        </ContentApp>
+    )
 }
